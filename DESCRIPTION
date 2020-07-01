@@ -1,0 +1,17 @@
+Package: specsimfts
+Type: Package
+Title: Temperature Conversion Package for Demonstration
+Version: 0.1
+Authors@R: c(person("Tomas", "Rubin", email = "tomas.rubin@gmail.com", role = c("aut", "cre")), person("Victor", "Panaretos", email = "victor.panaretos@epfl.ch", role = c("aut")))
+Description: The packages provides a toolbox of simulation method in the spectral
+	domain using harmonic Karhunen-Loeve decomposition approach or filtered white
+	noise approach, and allows for simulation of FARFIMA processes. The demo files
+	contain code snippets allowing for easy modification and quick deployment.
+Depends: R (>= 4.0.0)
+Imports:
+	pracma,
+	mvtnorm,
+	expm
+License: GPL-3
+Encoding: UTF-8
+RoxygenNote: 7.1.0
