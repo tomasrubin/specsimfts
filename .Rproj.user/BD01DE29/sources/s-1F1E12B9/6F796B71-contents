@@ -32,7 +32,7 @@ seed <- NULL # no rng seed is inicialized
 
 ## simulate in the spectral domain
 start_time <- Sys.time()
-fts_x <- filtration_simulate(sigma, theta, t_max, n_grid, seed_number=seed)
+fts_x <- filtration_simulate(theta, t_max, n_grid, seed_number=seed, sigma=sigma)
 end_time <- Sys.time()
 print(end_time - start_time)
 

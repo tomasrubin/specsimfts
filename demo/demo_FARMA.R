@@ -42,9 +42,25 @@ sigma_eigenfunctions <- list(
   function(x){ cos(10*pi*x) }
 )
 
+
+## alternatively, you can define the eigenvalues as functions of "n" and eigenfunctions as bivariate functions of "n" and "x"
+## uncomment one of the two following kernels and comment the low-rank eigendecomposition above
+
+# # innovation covariance operator (Brownian motion)
+# sigma_eigenvalues <- function(n) { 1/((n-0.5)*pi)^2 }
+# sigma_eigenfunctions <- function(n,x) { sqrt(2)*sin((n-0.5)*pi*x) }
+
+# # innovation covariance operator (Brownian bridge)
+# sigma_eigenvalues <- function(n) { 1/(n*pi)^2 }
+# sigma_eigenfunctions <- function(n,x) { sqrt(2)*sin(n*pi*x) }
+
+
 # put the parameters into one list
-FARFIMA_pars <- list(fractional_d=fractional_d,operators_ar=operators_ar,operators_ma=operators_ma,
-                    sigma_eigenvalues=sigma_eigenvalues, sigma_eigenfunctions=sigma_eigenfunctions)
+FARFIMA_pars <- list(fractional_d=fractional_d,
+                     operators_ar=operators_ar,
+                     operators_ma=operators_ma,
+                     sigma_eigenvalues=sigma_eigenvalues,
+                     sigma_eigenfunctions=sigma_eigenfunctions)
 
 
 ## set simulation setting

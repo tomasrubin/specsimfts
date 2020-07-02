@@ -1,6 +1,6 @@
 ###################################################################################################
 ## simulation in a given filtration
-filtration_simulate <- function(sigma, theta, t_max, n_grid, n_pc=n_grid, seed_number = NULL, sigma_eig = NaN, include_zero_freq=F){
+filtration_simulate <- function(theta, t_max, n_grid, n_pc=n_grid, seed_number = NULL, sigma=NULL, sigma_eigenvalues=NULL, sigma_eigenfunctions=NULL, include_zero_freq=F){
   
   ## random seed if assigned
   if (!is.null(seed_number)){ set.seed(seed_number) }
@@ -14,8 +14,28 @@ filtration_simulate <- function(sigma, theta, t_max, n_grid, n_pc=n_grid, seed_n
   t_max <- t_half*2
   ts <- c(1:t_half, t_max)
   
-  ## eigen decomposition of sigma, if not provided
-  if (!is.list(sigma_eig)){ 
+  # if provided analytic eigenfunctions or eigenvalues
+  if (!is.null(sigma_eigenvalues) & !is.null(sigma_eigenfunctions)){
+    
+    # can be either function or list
+    if (is.list(sigma_eigenvalues)){
+      sigma_eigenfunctions_eval <- sigma_eigenfunctions
+      for (n in 1:length(sigma_eigenfunctions)){
+        sigma_eigenfunctions_eval[[n]] <- sigma_eigenfunctions(grid)
+      }
+      sigma_eig <- list(values=sigma_eigenvalues, vectors=sigma_eigenfunctions_eval)
+    } else {
+      sigma_eigenvalues <- numeric(n_pc)
+      sigma_eigenfunctions_eval <- sigma_eigenfunctions
+      for (n in 1:n_pc){
+        sigma_eigenvalues[n] <- sigma_eigenvalues(n)
+        sigma_eigenfunctions_eval[[n]] <- sigma_eigenfunctions(n,grid)
+      }
+      sigma_eig <- list(values=sigma_eigenvalues, vectors=sigma_eigenfunctions_eval)
+    }
+    
+  } else {
+  # eigendecomposition of sigma, if not provided
     sigma_grid <- sigma(grid_matrix, t(grid_matrix))
     sigma_svd <- svd( sigma_grid, nu=n_grid, nv = 0)
     sigma_eig <- list(values = sigma_svd$d, vectors = sigma_svd$u)
