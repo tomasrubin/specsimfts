@@ -1,5 +1,9 @@
+########################################################################################
 # This example demonstrates how to simulate FARFIMA(1,d,0) process whose
 # AR operator admits special structure for quick inversion
+########################################################################################
+
+library(specsimfts)
 
 ###############################################################################################
 ## set up the FTS dynamics

@@ -1,5 +1,9 @@
+########################################################################################
 # This example demonstrates how to simulate FARFIMA(p,d,q) process
 # using the fully spectral and hybrid regularisation
+########################################################################################
+
+library(specsimfts)
 
 ###############################################################################################
 ## set up the FTS dynamics

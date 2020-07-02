@@ -1,6 +1,8 @@
+########################################################################################
 # This demo file shows simulation of the functional time series who's
 # spectral density operators are given by their eigendecomposition.
-
+########################################################################################
+library(specsimfts)
 
 ## Define the functions for harmonic eigenvalues and eigenfunctions
 harmonic_eigenvalues <- function( omega, n ){ 1/( (1-0.9 *cos(omega)) * (n*pi)^2 ) }

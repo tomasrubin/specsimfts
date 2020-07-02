@@ -1,6 +1,9 @@
+########################################################################################
 # This demo file shows simulation of the functional time series who's
 # spectral density kernels given by a direct formula
+########################################################################################
 
+library(specsimfts)
 
 ## Define the functions for harmonic eigenvalues and eigenfunctions
 k_bbridge <- function(x,y) { pmin(x,y)-x*y }

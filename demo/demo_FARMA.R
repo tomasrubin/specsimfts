@@ -1,6 +1,10 @@
+########################################################################################
 # This example demonstrates how to simulate FARFIMA(p,d,q) process whose
 # MA and AR parameters are defined as integral operators through their kernels
 # and innovation noise covariance is given by its eigendecomposition
+########################################################################################
+
+library(specsimfts)
 
 ###############################################################################################
 ## set up the FTS dynamics
