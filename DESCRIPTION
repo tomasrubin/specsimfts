@@ -1,6 +1,6 @@
 Package: specsimfts
 Type: Package
-Title: Temperature Conversion Package for Demonstration
+Title: Spectral domain simulation methods for functional time series
 Version: 0.1
 Authors@R: c(person("Tomas", "Rubin", email = "tomas.rubin@gmail.com", role = c("aut", "cre")), person("Victor", "Panaretos", email = "victor.panaretos@epfl.ch", role = c("aut")))
 Description: The packages provides a toolbox of simulation method in the spectral
@@ -10,7 +10,6 @@ Description: The packages provides a toolbox of simulation method in the spectra
 Depends: R (>= 4.0.0)
 Imports:
 	pracma,
-	mvtnorm,
 	expm
 License: GPL-3
 Encoding: UTF-8

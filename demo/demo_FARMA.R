@@ -110,6 +110,8 @@ if (FARFIMA_test_stationarity(FARFIMA_pars, 101)){
   r <- covlagh_empiric - covlagh
   print(paste("Nuclear norm relative error:", sum(svd(r, nu=0, nv=0)$d) / sum(diag(covlag0))))
 
+} else {
+  print("Not stationary AR part.")
 }
 
 

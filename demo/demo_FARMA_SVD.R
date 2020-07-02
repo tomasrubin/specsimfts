@@ -81,11 +81,11 @@ if (FARFIMA_test_stationarity(FARFIMA_pars, 101)){
   
   # theoretical empirical covariance:
   # WARNING: the evaluation of true autocovariance operators is !!extremely slow!! for high "n_grid" !!!
-  covlag0 <- FARFIMA_covlagh(FARFIMA_pars, 0, n_grid)
+  covlag0 <- FARFIMA_covlagh_operator(FARFIMA_pars, 0, n_grid)
   if (lag == 0){
     covlagh <- covlag0
   } else {
-    covlagh <- FARFIMA_covlagh(FARFIMA_pars, lag, n_grid)
+    covlagh <- FARFIMA_covlagh_operator(FARFIMA_pars, lag, n_grid)
   }
   
   # surface plot of the theoretical covariance
@@ -95,6 +95,8 @@ if (FARFIMA_test_stationarity(FARFIMA_pars, 101)){
   r <- covlagh_empiric - covlagh
   print(paste("Nuclear norm relative error:", sum(svd(r, nu=0, nv=0)$d) / sum(diag(covlag0))))
   
+} else {
+  print("Not stationary AR part.")
 }
 
 

@@ -5,11 +5,11 @@
 ## set up the FTS dynamics
 
 # fractional integration
-fractional_d <- -0.3 # in the open interval (-0.5, 0.5), positive number means long-range dependence
+fractional_d <- 0.3 # in the open interval (-0.5, 0.5), positive number means long-range dependence
 
 # autoregressive operators
 operators_ar <- list(
-  function(x,y){ exp(x+y) }
+  function(x,y){ 0.3*exp(x+y) }
 )
 # operators_ar <- list() # use empty list for degenerate AR part
 
@@ -21,8 +21,8 @@ operators_ma <- list(
 # operators_ma <- list() # use empty list for degenerate MA part
 
 # covariance of the inovation defined by the kernel
-sigma <- function(x,y) { exp( -(x-y)^2 ) } # exponential kernel
-# sigma <- function(x,y) { pmin(x,y) } # Brownian motion
+# sigma <- function(x,y) { exp( -(x-y)^2 ) } # exponential kernel
+sigma <- function(x,y) { pmin(x,y) } # Brownian motion
 # sigma <- function(x,y) { pmin(x,y) - x*y } # Brownian bridge
 
 # put the parameters into one list
@@ -59,14 +59,15 @@ if (FARFIMA_test_stationarity(FARFIMA_pars, 101)){
   ## display trajectories
   # as the methods are conceptually different, the trajectories are different even if inicialized by the same seed
   par(mfrow=c(2,1))
-  plot(spec_fts_x[,1], type='l', title="fully spectral")
-  plot(hybrid_fts_x[,1], type='l', title="hybrid")
+  plot(spec_fts_x[,1], type='l', main="fully spectral")
+  plot(hybrid_fts_x[,1], type='l', main="hybrid")
   
   ## display timing
-  print(paste("Fully spectral (solving lin.eq. at each frequency:",spec_end_time - spec_start_time))
-  print(paste("Hybrid simulation:",hybrid_end_time - hybrid_start_time))
+  print(paste("Fully spectral (solving lin.eq. at each frequency:",round(spec_end_time - spec_start_time,2),"seconds."))
+  print(paste("Hybrid simulation:",round(hybrid_end_time - hybrid_start_time,2),"seconds."))
   
-
+} else {
+  print("Not stationary AR part.")
 }
 
 

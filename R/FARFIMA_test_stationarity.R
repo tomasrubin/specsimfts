@@ -34,9 +34,14 @@ FARFIMA_test_stationarity <- function(FARFIMA_pars, n_grid){
     
     m <- composed_a %^% 1000 # perform matrix power
     
-    if (is.na(max(m))){ return(F) }
-    else {
-      return( norm( m, type="2" ) < 1 )
+    if (is.na(max(m))){
+      return(F)
+    } else {
+      if (is.finite(m[1,1])){
+        return( norm( m, type="2" ) < 1 )
+      } else {
+        return(F)
+      }
     }
   }
 }
