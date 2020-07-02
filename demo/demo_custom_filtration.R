@@ -1,6 +1,6 @@
 ###############################################################################################
-# This example demonstrates how to simulate FARFIMA(1,d,0) process whose
-# AR operator admits special structure for quick inversion
+# This example demonstrates how to simulate a filtered white noise process defined
+# in the paper using a custom filtration and Brownian motion innovation covariance.
 ###############################################################################################
 
 library(specsimfts)
@@ -31,11 +31,12 @@ sigma_eigenfunctions <- function(n,x) { sqrt(2)*sin((n-0.5)*pi*x) }
 
 
 # define filtration
-fractional_d <- 0.2
 theta <- function(omega,f){
-  ( 2 * sin(omega/2) )^(-fractional_d) *
-    (f + (exp(-1i*omega)*0.34) /(1-exp(-1i*omega)*0.34*sqrt(pi)/2*pracma::erfi(1)) *
-       rank_one_tensor( function(x){exp((x^2)/2)}, function(x){exp((x^2)/2)}, f ))
+  1i +
+    (f+1i*omega)^2 +
+    rev(f) +
+    omega*cumsum(f) +
+    kernel_operator( function(x,y){ sin(omega+x+2*y)}, f )
 }
 
 
