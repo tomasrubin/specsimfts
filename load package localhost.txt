@@ -1,0 +1,7 @@
+setwd("C:/Users/tomas/OneDrive/Documents/GitHub/specsimfts")
+
+library(devtools);
+load_all(".");
+
+
+

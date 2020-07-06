@@ -8,7 +8,7 @@
 #' @param n_grid Number of grid points (spatial resolution) of the discretisation of [0,1]^2 for the operator kernel to evaluate.
 #' @param n_pc The number of harmonic eigenfunctions to be used for the numerical integration at each frequency.
 #' @param n_grid_freq The grid points for the spectral density to evaluate at. Partition of [0,pi].
-#' @return lag-h autocovariance operator, matrix of size (\code{n_grid},\code{n_grid})
+#' @return lag-h autocovariance operator, matrix of size (n_grid,n_grid)
 #' @references Rubin, Panaretos. \emph{Simulation of stationary functional time series with given spectral density}. arXiv, 2020
 #' @seealso \code{\link{HKL_simulate}}
 #' @examples

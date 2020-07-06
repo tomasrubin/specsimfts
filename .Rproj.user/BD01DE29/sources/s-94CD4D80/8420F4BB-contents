@@ -7,8 +7,8 @@
 #' @param n_grid Number of grid points (spatial resolution) of the discretisation of [0,1] where the FTS is to be simulated.
 #' @param n_pc The number of harmonic eigenfunctions to be used for the simulation at each frequency.
 #' @param seed_number The random seed inicialization for the simulation. The value "NULL" means no inicialization
-#' @param include_freq_zero If set \code{TRUE}, the zero frequency is included for simulation in the spectral domain. Set \code{FALSE} for processes with singularity at frequency zero, such as the long-range dependent FARFIMA(p,d,q) process.
-#' @return functional time series sample, matrix of size (\code{n_grid},\code{t_max})
+#' @param include_freq_zero If set "TRUE", the zero frequency is included for simulation in the spectral domain. Set "FALSE" for processes with singularity at frequency zero, such as the long-range dependent FARFIMA(p,d,q) process.
+#' @return functional time series sample, matrix of size (n_grid,t_max)
 #' @references Rubin, Panaretos. \emph{Simulation of stationary functional time series with given spectral density}. arXiv, 2020
 #' @seealso \code{\link{HKL_covlagh_operator}} \code{\link{spec_density_simulate}}
 #' @examples

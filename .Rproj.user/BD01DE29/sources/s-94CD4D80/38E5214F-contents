@@ -1,0 +1,12 @@
+# define kernel
+g1 <- function(x){ exp(x^2) }
+g2 <- function(x){ sin(x) }
+
+# discretize sinus function
+grid <- seq(0,1, length.out = 101)
+f <- sin(grid)
+
+# apply onto function
+plot(f, type="l", col="blue", ylim=c(-0.5,1))
+lines( rank_one_tensor(g1,g2,f), col="red" )
+legend("topleft",c("f","<f,g2>g1"), col=c("blue","red"), lty=1)
