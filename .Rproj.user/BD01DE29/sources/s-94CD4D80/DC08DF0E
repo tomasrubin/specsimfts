@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1594029094414.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "DC08DF0E",
+    "lastKnownWriteTime" : 1594034779,
+    "last_content_update" : 1594034779328,
+    "path" : "~/GitHub/specsimfts/R/spec_density_simulate.R",
+    "project_path" : "R/spec_density_simulate.R",
+    "properties" : {
+        "cursorPosition" : "7,310",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1594040301560.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2795039339",
+    "id" : "DF58F06E",
+    "lastKnownWriteTime" : 1593678229,
+    "last_content_update" : 1593678229,
+    "path" : "~/GitHub/specsimfts/R/FARFIMA_covlagh_operator.R",
+    "project_path" : "R/FARFIMA_covlagh_operator.R",
+    "properties" : {
+        "cursorPosition" : "22,12",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 9,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1594040302442.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "E5848566",
+    "lastKnownWriteTime" : 1594043063,
+    "last_content_update" : 1594043063938,
+    "path" : "~/GitHub/specsimfts/R/FARFIMA_simulate.R",
+    "project_path" : "R/FARFIMA_simulate.R",
+    "properties" : {
+        "cursorPosition" : "72,3",
+        "scrollLine" : "38"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

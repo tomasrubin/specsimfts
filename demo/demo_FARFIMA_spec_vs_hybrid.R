@@ -67,7 +67,7 @@ if (FARFIMA_test_stationarity(FARFIMA_pars, 101)){
   plot(hybrid_fts_x[,1], type='l', main="hybrid")
   
   ## display timing
-  print(paste("Fully spectral (solving lin.eq. at each frequency:",round(spec_end_time - spec_start_time,2),"seconds."))
+  print(paste("Fully spectral (solving lin.eq. at each frequency):",round(spec_end_time - spec_start_time,2),"seconds."))
   print(paste("Hybrid simulation:",round(hybrid_end_time - hybrid_start_time,2),"seconds."))
   
 } else {

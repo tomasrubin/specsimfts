@@ -1,0 +1,64 @@
+# fractional integration
+fractional_d <- 0 # in the open interval (-0.5, 0.5), positive number means long-range dependence
+
+# autoregressive operators
+operators_ar <- list(
+  function(x,y){ 0.3*sin(x-y) },
+  function(x,y){ 0.3*cos(x-y) },
+  function(x,y){ 0.3*sin(2*x) },
+  function(x,y){ 0.3*cos(y) }
+)
+# operators_ar <- list() # use empty list for degenerate AR part
+
+# moving average kernels
+# you can put here arbitrary long list of operators
+operators_ma <- list(
+  function(x,y){ x+y },
+  function(x,y){ x },
+  function(x,y){ y }
+)
+# operators_ma <- list() # use empty list for degenerate MA part
+
+# covariance of the inovation defined through eigenvalues and eigenfunctions
+# you can put here arbitrary long lists but their lenghts should match
+sigma_eigenvalues <- c(1, 0.6, 0.3, 0.1, 0.1, 0.1, 0.05, 0.05, 0.05, 0.05)
+sigma_eigenfunctions <- list(
+  function(x){ sin(2*pi*x) },
+  function(x){ cos(2*pi*x) },
+  function(x){ sin(4*pi*x) },
+  function(x){ cos(4*pi*x) },
+  function(x){ sin(6*pi*x) },
+  function(x){ cos(6*pi*x) },
+  function(x){ sin(8*pi*x) },
+  function(x){ cos(8*pi*x) },
+  function(x){ sin(10*pi*x) },
+  function(x){ cos(10*pi*x) }
+)
+
+# # innovation covariance operator (Brownian motion)
+# sigma_eigenvalues <- function(n) { 1/((n-0.5)*pi)^2 }
+# sigma_eigenfunctions <- function(n,x) { sqrt(2)*sin((n-0.5)*pi*x) }
+
+# put the parameters into one list
+FARFIMA_pars <- list(fractional_d=fractional_d,
+                     operators_ar=operators_ar,
+                     operators_ma=operators_ma,
+                     sigma_eigenvalues=sigma_eigenvalues,
+                     sigma_eigenfunctions=sigma_eigenfunctions)
+
+# # Alternatively, define the kernel of the white noise innovation.
+# sigma <- function(x,y) { pmin(x,y) } # Brownian motion
+# FARFIMA_pars <- list(fractional_d=fractional_d,operators_ar=operators_ar,operators_ma=operators_ma, sigma=sigma)
+
+
+# simulate trajectory
+if (FARFIMA_test_stationarity(FARFIMA_pars)){
+  # fully spectral approach. if AR part is non-degenerate, the simulation involves solving a system of liear equations at each frequency
+  fts_x <- FARFIMA_simulate(FARFIMA_pars, t_max, n_grid, hybrid_ar = F)
+  
+  # # hybrid simulation method
+  # fts_x <- FARFIMA_simulate(FARFIMA_pars, t_max, n_grid, hybrid_ar = T)
+  
+  # display trajectory
+  plot(fts_x[,1], type='l')
+}

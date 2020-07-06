@@ -1,0 +1,22 @@
+# innovation covariance operator (Brownian motion)
+sigma <- function(x,y) { pmin(x,y) }
+
+# define filtration
+theta <- function(omega,f){
+  2*f+
+    1i*rev(f) +
+    omega*cumsum(f)/length(f) +
+    rank_one_tensor( function(x){sin(x)}, function(x){exp(x)}, f ) +
+    kernel_operator( function(x,y){sin(omega+x+2*y)}, f )
+}
+
+# simulation setting
+t_max <- 1000
+n_grid <- 101
+
+# simulate in the spectral domain
+fts_x <- filtration_simulate(theta, t_max, n_grid, sigma=sigma)
+
+# plot the first curve
+plot(fts_x[,1], type='l')
+

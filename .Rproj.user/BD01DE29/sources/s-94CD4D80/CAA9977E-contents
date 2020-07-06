@@ -30,27 +30,42 @@ operators_ma <- list(
 )
 # operators_ma <- list() # use empty list for degenerate MA part
 
-# covariance of the inovation
-sigma <- function(x,y){
-  1*sin(2*pi*x)*sin(2*pi*y)+
-    0.6*cos(2*pi*x)*cos(2*pi*y)+
-    0.3*sin(4*pi*x)*sin(4*pi*y)+
-    0.1*cos(4*pi*x)*cos(4*pi*y)+
-    0.1*sin(6*pi*x)*sin(6*pi*y)+
-    0.1*cos(6*pi*x)*cos(6*pi*y)+
-    0.05*sin(8*pi*x)*sin(8*pi*y)+
-    0.05*cos(8*pi*x)*cos(8*pi*y)+
-    0.05*sin(10*pi*x)*sin(10*pi*y)+
-    0.05*cos(10*pi*x)*cos(10*pi*y)
-}
+# covariance of the inovation defined through eigenvalues and eigenfunctions
+# you can put here arbitrary long lists but their lenghts should match
+sigma_eigenvalues <- c(1, 0.6, 0.3, 0.1, 0.1, 0.1, 0.05, 0.05, 0.05, 0.05)
+sigma_eigenfunctions <- list(
+  function(x){ sin(2*pi*x) },
+  function(x){ cos(2*pi*x) },
+  function(x){ sin(4*pi*x) },
+  function(x){ cos(4*pi*x) },
+  function(x){ sin(6*pi*x) },
+  function(x){ cos(6*pi*x) },
+  function(x){ sin(8*pi*x) },
+  function(x){ cos(8*pi*x) },
+  function(x){ sin(10*pi*x) },
+  function(x){ cos(10*pi*x) }
+)
 
-## alternative definitions of sigma
-# sigma <- function(x,y) { pmin(x,y) } # Brownian motion
-# sigma <- function(x,y) { pmin(x,y) - x*y } # Brownian bridge
-# sigma <- function(x,y) { exp( -(x-y)^2 ) } # exponential kernel
 
-# put parameters into one list
-FARFIMA_pars <- list(fractional_d=fractional_d,operators_ar=operators_ar,operators_ma=operators_ma, sigma=sigma)
+## alternatively, you can define the eigenvalues as functions of "n" and eigenfunctions as bivariate functions of "n" and "x"
+## uncomment one of the two following kernels and comment the low-rank eigendecomposition above
+
+# # innovation covariance operator (Brownian motion)
+# sigma_eigenvalues <- function(n) { 1/((n-0.5)*pi)^2 }
+# sigma_eigenfunctions <- function(n,x) { sqrt(2)*sin((n-0.5)*pi*x) }
+
+# # innovation covariance operator (Brownian bridge)
+# sigma_eigenvalues <- function(n) { 1/(n*pi)^2 }
+# sigma_eigenfunctions <- function(n,x) { sqrt(2)*sin(n*pi*x) }
+
+
+# put the parameters into one list
+FARFIMA_pars <- list(fractional_d=fractional_d,
+                     operators_ar=operators_ar,
+                     operators_ma=operators_ma,
+                     sigma_eigenvalues=sigma_eigenvalues,
+                     sigma_eigenfunctions=sigma_eigenfunctions)
+
 
 ## set simulation setting
 t_max <- 1600
@@ -64,8 +79,8 @@ seed <- NULL # no rng seed is inicialized
 ## simulate
 
 # first test stationarity of the defined autoregressive part
-if (FARFIMA_test_stationarity(FARFIMA_pars)){
-  
+if (FARFIMA_test_stationarity(FARFIMA_pars, 101)){
+
   ## simulate in the spectral domain
   start_time <- Sys.time()
   fts_x <- FARFIMA_simulate(FARFIMA_pars, t_max, n_grid, seed_number=seed, hybrid_ar = F)
@@ -98,7 +113,7 @@ if (FARFIMA_test_stationarity(FARFIMA_pars)){
   # calculate relative simulation error (in nuclear norm) for this one sample
   r <- covlagh_empiric - covlagh
   print(paste("Nuclear norm relative error:", sum(svd(r, nu=0, nv=0)$d) / sum(diag(covlag0))))
-  
+
 } else {
   print("Not stationary AR part.")
 }
