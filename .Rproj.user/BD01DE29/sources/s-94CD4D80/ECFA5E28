@@ -7,18 +7,18 @@
     "folds" : "",
     "hash" : "0",
     "id" : "ECFA5E28",
-    "lastKnownWriteTime" : 1594040552,
-    "last_content_update" : 1594040552905,
+    "lastKnownWriteTime" : 1594047271,
+    "last_content_update" : 1594047271730,
     "path" : "~/GitHub/specsimfts/R/FARFIMA_test_stationarity.R",
     "project_path" : "R/FARFIMA_test_stationarity.R",
     "properties" : {
-        "cursorPosition" : "22,4",
+        "cursorPosition" : "6,68",
         "scrollLine" : "0"
     },
     "read_only" : false,
     "read_only_alternatives" : [
     ],
-    "relative_order" : 8,
+    "relative_order" : 9,
     "source_on_save" : false,
     "source_window" : "",
     "type" : "r_source"
