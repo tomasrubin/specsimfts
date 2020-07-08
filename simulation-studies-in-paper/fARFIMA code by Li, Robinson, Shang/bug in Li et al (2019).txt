@@ -1,0 +1,9 @@
+On the line 48 of file "uasa_a_1604362_sm9140.r" there should be
+
+res[,ik] = funIntegral(refinement, Mat, res[,(ik-1)]) + eta_star_val[,ik] # this is correct
+
+but there was
+
+res[,ik] = funIntegral(refinement, Mat, eta_star_val[,(ik-1)]) + eta_star_val[,ik] # here was a mistake
+
+The mistake was essentially plugging in the noise into the autoregressive recursion as opposed to the previous step of the process.

@@ -45,7 +45,7 @@ funARMat = function(refinement, eta_star_val)
     res[,1] = eta_star_val[,1]
     for(ik in 2:(ncol(eta_star_val)))
     {
-        # res[,ik] = funIntegral(refinement, Mat, eta_star_val[,(ik-1)]) + eta_star_val[,ik] # is here a mistake?
+        # res[,ik] = funIntegral(refinement, Mat, eta_star_val[,(ik-1)]) + eta_star_val[,ik] # here was a mistake
         res[,ik] = funIntegral(refinement, Mat, res[,(ik-1)]) + eta_star_val[,ik] # this is correct
     }
     return(res)
