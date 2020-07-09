@@ -28,7 +28,7 @@ The packages includes four simulation approaches (see below). Each approach incl
     
 See below on guidence on how to run the demos and to read their description.
 
-# Installation
+## Installation
 
 ```{r}
 library("devtools")
@@ -107,11 +107,11 @@ library("specsimfts")
 demo("demo_FARFIMA_spec_vs_hybrid")
 ```
 
-# Usage 
+## Usage 
 
 Individuals are free to use the codes for the purpose academic research, provided it is properly acknowledged and the paper *Rubin and Panaretos (2020) "Simulation of stationary functional time series with given spectral density"* is cited. For any other use, permission must first be arranged with the author. Unless otherwise specified, the author of the codes is Tomas Rubin (tomas.rubin@gmail.com). Please contact me if you find errors in the codes or if you have feature requests.
     
-# Contact
+## Contact
 
 Tomas Rubin
 
