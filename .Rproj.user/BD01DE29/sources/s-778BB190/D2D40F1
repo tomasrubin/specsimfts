@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1594295371873.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3212370347",
+    "id" : "D2D40F1",
+    "lastKnownWriteTime" : 1594295398,
+    "last_content_update" : 1594295398999,
+    "path" : "~/GitHub/specsimfts/R/filter_simulate.R",
+    "project_path" : "R/filter_simulate.R",
+    "properties" : {
+        "cursorPosition" : "169,1",
+        "scrollLine" : "134"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

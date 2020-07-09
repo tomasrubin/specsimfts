@@ -1,36 +1,20 @@
 ###############################################################################################
 # This example demonstrates how to simulate a filtered white noise process defined
-# in the paper using a custom filtration and Brownian motion innovation covariance.
+# in the paper using a custom filter and Brownian motion innovation covariance.
 ###############################################################################################
 
 library(specsimfts)
 ## set up the FTS dynamics
 
 # innovation covariance operator (Brownian motion)
-sigma_eigenvalues <- function(n) { 1/((n-0.5)*pi)^2 }
-sigma_eigenfunctions <- function(n,x) { sqrt(2)*sin((n-0.5)*pi*x) }
+sigma <- function(x,y) { pmin(x,y) }
 
 # # innovation covariance operator (Brownian bridge)
-# sigma_eigenvalues <- function(n) { 1/(n*pi)^2 }
-# sigma_eigenfunctions <- function(n,x) { sqrt(2)*sin(n*pi*x) }
-
-# innovation covariance, low rank specification (as a list)
-# sigma_eigenvalues <- c(1, 0.6, 0.3, 0.1, 0.1, 0.1, 0.05, 0.05, 0.05, 0.05)
-# sigma_eigenfunctions <- list(
-#   function(x){ sin(2*pi*x) },
-#   function(x){ cos(2*pi*x) },
-#   function(x){ sin(4*pi*x) },
-#   function(x){ cos(4*pi*x) },
-#   function(x){ sin(6*pi*x) },
-#   function(x){ cos(6*pi*x) },
-#   function(x){ sin(8*pi*x) },
-#   function(x){ cos(8*pi*x) },
-#   function(x){ sin(10*pi*x) },
-#   function(x){ cos(10*pi*x) }
-# )
+# sigma <- function(x,y) { pmin(x,y) - x*y }
 
 
-# define filtration
+
+# define filter
 theta <- function(omega,f){
   2*f+
     1i*rev(f) +
@@ -54,7 +38,7 @@ seed <- NULL # no rng seed is inicialized
 
 ## simulate in the spectral domain
 start_time <- Sys.time()
-fts_x <- filtration_simulate(theta, t_max, n_grid, seed_number=seed, sigma_eigenfunctions = sigma_eigenfunctions, sigma_eigenvalues=sigma_eigenvalues)
+fts_x <- filter_simulate(theta, t_max, n_grid, seed_number=seed, sigma=sigma)
 end_time <- Sys.time()
 print(end_time - start_time)
 
@@ -69,11 +53,11 @@ covlagh_empiric <- cov( t(fts_x[,(1+lag):t_max]), t(fts_x[,1:(t_max-lag)]))
 persp(covlagh_empiric, ticktype = "detailed") # surface plot. Warning: the visualisation takes long if "n_grid" is high
 
 # theoretical empirical covariance:
-covlag0 <- filtration_covlagh_operator(theta, 0, n_grid, sigma_eigenvalues = sigma_eigenvalues, sigma_eigenfunctions = sigma_eigenfunctions)
+covlag0 <- filter_covlagh_operator(theta, 0, n_grid, sigma=sigma)
 if (lag == 0){
   covlagh <- covlag0
 } else {
-  covlagh <- filtration_covlagh_operator(sigma, theta, lag, n_grid, sigma_eigenvalues = sigma_eigenvalues, sigma_eigenfunctions = sigma_eigenfunctions)
+  covlagh <- filter_covlagh_operator(theta, lag, n_grid, sigma=sigma)
 }
 
 # surface plot of the theoretical covariance

@@ -14,7 +14,7 @@ simulation_run_FARIMA_PC <- function( analytic_eig, how_to_AR, t_max, n_grid, la
   sigma <- function(x,y) { pmin(x,y)}
   if (how_to_AR == "sm"){
     
-    # define filtration
+    # define filter
     fractional_d <- 0.2
     theta <- function(omega,f){
       ( 2 * sin(omega/2) )^(-fractional_d) *
@@ -23,9 +23,9 @@ simulation_run_FARIMA_PC <- function( analytic_eig, how_to_AR, t_max, n_grid, la
     }
     
     if (analytic_eig){
-      fts_x <- filtration_simulate(sigma, theta, t_max, n_grid, seed_number=seed_number, sigma_eig = BM_eig(n_grid), include_zero_freq=F)
+      fts_x <- filter_simulate(sigma, theta, t_max, n_grid, seed_number=seed_number, sigma_eig = BM_eig(n_grid), include_zero_freq=F)
     } else {
-      fts_x <- filtration_simulate(sigma, theta, t_max, n_grid, seed_number=seed_number, include_zero_freq=F)
+      fts_x <- filter_simulate(sigma, theta, t_max, n_grid, seed_number=seed_number, include_zero_freq=F)
     }
     
     

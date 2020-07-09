@@ -1,8 +1,8 @@
-#' Simulate functional time series sample when the dynamics is defined as a filtered white noise through the white noise covariance operator and the filtration is given by its frequency response function Theta.
+#' Simulate functional time series sample when the dynamics is defined as a filtered white noise through the white noise covariance operator and the filter is given by its frequency response function Theta.
 #' 
 #'
-#' @title Simulate a FTS defined as a filtration of a white noise
-#' @param theta The frequency response operator Theta(omega) of the filtration used for the definition of filtered white noise. A function of two variables, \code{omega} and \code{f}, where \code{f} is a vector (discretisation of a function) on which the operator Theta at frequency \code{omega} is applied onto. See the example bellow to inspect how you can define Theta(omega). The functions \code{\link{rank_one_tensor}} and \code{\link{kernel_operator}} might be useful for the definition of Theta. Must be well defined for frequencies (0,pi]. The interval [pi,2pi) is not used and is calculated by mirroring of (0,pi].
+#' @title Simulate a FTS defined as a filter of a white noise
+#' @param theta The frequency response operator Theta(omega) of the filter used for the definition of filtered white noise. A function of two variables, \code{omega} and \code{f}, where \code{f} is a vector (discretisation of a function) on which the operator Theta at frequency \code{omega} is applied onto. See the example bellow to inspect how you can define Theta(omega). The functions \code{\link{rank_one_tensor}} and \code{\link{kernel_operator}} might be useful for the definition of Theta. Must be well defined for frequencies (0,pi]. The interval [pi,2pi) is not used and is calculated by mirroring of (0,pi].
 #' @param t_max Time horizon to be simulated. Must be an even number, otherwise it is increased by one.
 #' @param n_grid Number of grid points (spatial resolution) of the discretisation of [0,1] where the FTS is to be simulated.
 #' @param n_pc The number of eigenfunctions of sigma to be used for the simulation. Setting n_pc=n_grid is recommended as there is hardly any computational gain when n_pc is smaller. In case the sigma is defined as finite rank operator (through lists \code{sigma_eigenvalues} and \code{sigma_eigenfunctions}) and \code{n_pc} is higher than this finite rank, \code{n_pc} is automatically discresed to match this finite rank.
@@ -13,12 +13,12 @@
 #' @param include_freq_zero If set \code{TRUE}, the zero frequency is included for simulation in the spectral domain. Set \code{FALSE} for processes with singularity at frequency zero, e.g. the long-range dependent FARFIMA(p,d,q) process.
 #' @return functional time series sample, matrix of size (\code{n_grid},\code{t_max})
 #' @references Rubin, Panaretos. \emph{Simulation of stationary functional time series with given spectral density}. arXiv, 2020
-#' @seealso \code{\link{filtration_covlagh_operator}} \code{\link{rank_one_tensor}} \code{\link{kernel_operator}}
+#' @seealso \code{\link{filter_covlagh_operator}} \code{\link{rank_one_tensor}} \code{\link{kernel_operator}}
 #' @examples
 #' # define the white noise covariance operator (Brownian motion)
 #' sigma <- function(x,y) { pmin(x,y) }
 #'
-#' # # Alternatively defined the sigma covariance through its eigendecomposition, and supply it to the function 'filtration_simulate'
+#' # # Alternatively defined the sigma covariance through its eigendecomposition, and supply it to the function 'filter_simulate'
 #' # sigma_eigenvalues <- function(n) { 1/((n-0.5)*pi)^2 }
 #' # sigma_eigenfunctions <- function(n,x) { sqrt(2)*sin((n-0.5)*pi*x) }
 #' 
@@ -37,7 +37,7 @@
 #' #   function(x){ cos(10*pi*x) }
 #' # )
 #' 
-#' # define filtration
+#' # define filter
 #' theta <- function(omega,f){
 #' 2*f+
 #'  1i*rev(f) +
@@ -51,10 +51,10 @@
 #' n_grid <- 101
 #' 
 #' # simulate in the spectral domain
-#' fts_x <- filtration_simulate(theta, t_max, n_grid, sigma=sigma)
+#' fts_x <- filter_simulate(theta, t_max, n_grid, sigma=sigma)
 #' 
 #' # # Alternatively simulate with the known eigendecomposition of sigma
-#' # fts_x <- filtration_simulate(theta, t_max, n_grid, sigma_eigenfunctions = sigma_eigenfunctions, sigma_eigenvalues=sigma_eigenvalues)
+#' # fts_x <- filter_simulate(theta, t_max, n_grid, sigma_eigenfunctions = sigma_eigenfunctions, sigma_eigenvalues=sigma_eigenvalues)
 #' 
 #' # plot the first curve
 #' plot(fts_x[,1], type='l')
@@ -62,7 +62,7 @@
 #' @export
 
 
-filtration_simulate <- function(theta, t_max, n_grid, n_pc=n_grid, seed_number = NULL, sigma=NULL, sigma_eigenvalues=NULL, sigma_eigenfunctions=NULL, include_zero_freq=F){
+filter_simulate <- function(theta, t_max, n_grid, n_pc=n_grid, seed_number = NULL, sigma=NULL, sigma_eigenvalues=NULL, sigma_eigenfunctions=NULL, include_zero_freq=F){
   
   ## random seed if assigned
   if (!is.null(seed_number)){ set.seed(seed_number) }

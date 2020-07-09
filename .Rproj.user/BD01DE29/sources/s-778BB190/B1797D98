@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1594295265714.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2179933592",
+    "id" : "B1797D98",
+    "lastKnownWriteTime" : 1594295334,
+    "last_content_update" : 1594295334165,
+    "path" : "~/GitHub/specsimfts/demo/demo_FARFIMA_as_filter.R",
+    "project_path" : "demo/demo_FARFIMA_as_filter.R",
+    "properties" : {
+        "cursorPosition" : "56,24",
+        "scrollLine" : "52"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

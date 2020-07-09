@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1594295372745.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3537194305",
+    "id" : "5044B949",
+    "lastKnownWriteTime" : 1594295387,
+    "last_content_update" : 1594295387926,
+    "path" : "~/GitHub/specsimfts/R/filter_covlagh_operator.R",
+    "project_path" : "R/filter_covlagh_operator.R",
+    "properties" : {
+        "cursorPosition" : "57,1",
+        "scrollLine" : "21"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

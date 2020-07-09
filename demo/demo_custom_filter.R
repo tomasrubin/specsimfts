@@ -1,6 +1,6 @@
 ###############################################################################################
-# This example demonstrates how to simulate FARFIMA(1,d,0) process whose
-# AR operator admits special structure for quick inversion
+# This example demonstrates how to simulate a filtered white noise process defined
+# in the paper using a custom filter and Brownian motion innovation covariance.
 ###############################################################################################
 
 library(specsimfts)
@@ -14,7 +14,7 @@ sigma_eigenfunctions <- function(n,x) { sqrt(2)*sin((n-0.5)*pi*x) }
 # sigma_eigenvalues <- function(n) { 1/(n*pi)^2 }
 # sigma_eigenfunctions <- function(n,x) { sqrt(2)*sin(n*pi*x) }
 
-# innovation covariance, low rank specification (as list)
+# innovation covariance, low rank specification (as a list)
 # sigma_eigenvalues <- c(1, 0.6, 0.3, 0.1, 0.1, 0.1, 0.05, 0.05, 0.05, 0.05)
 # sigma_eigenfunctions <- list(
 #   function(x){ sin(2*pi*x) },
@@ -30,14 +30,14 @@ sigma_eigenfunctions <- function(n,x) { sqrt(2)*sin((n-0.5)*pi*x) }
 # )
 
 
-# define filtration
-fractional_d <- 0.2
+# define filter
 theta <- function(omega,f){
-  ( 2 * sin(omega/2) )^(-fractional_d) *
-    (f + (exp(-1i*omega)*0.34) /(1-exp(-1i*omega)*0.34*sqrt(pi)/2*pracma::erfi(1)) *
-       rank_one_tensor( function(x){exp((x^2)/2)}, function(x){exp((x^2)/2)}, f ))
+  2*f+
+    1i*rev(f) +
+    omega*cumsum(f)/length(f) +
+    rank_one_tensor( function(x){sin(x)}, function(x){exp(x)}, f ) +
+    kernel_operator( function(x,y){sin(omega+x+2*y)}, f )
 }
-
 
 ## simulation setting
 t_max <- 1000
@@ -54,7 +54,7 @@ seed <- NULL # no rng seed is inicialized
 
 ## simulate in the spectral domain
 start_time <- Sys.time()
-fts_x <- filtration_simulate(theta, t_max, n_grid, seed_number=seed, sigma_eigenfunctions = sigma_eigenfunctions, sigma_eigenvalues=sigma_eigenvalues)
+fts_x <- filter_simulate(theta, t_max, n_grid, seed_number=seed, sigma_eigenfunctions = sigma_eigenfunctions, sigma_eigenvalues=sigma_eigenvalues)
 end_time <- Sys.time()
 print(end_time - start_time)
 
@@ -62,18 +62,18 @@ print(end_time - start_time)
 plot(fts_x[,1], type='l')
 
 ## compare the empirical and theoretical autocovariance operator
-lag <- 1 # user input here
+lag <- 0 # user input here
 
 # calculate the empirical covariance operator
 covlagh_empiric <- cov( t(fts_x[,(1+lag):t_max]), t(fts_x[,1:(t_max-lag)]))
 persp(covlagh_empiric, ticktype = "detailed") # surface plot. Warning: the visualisation takes long if "n_grid" is high
 
 # theoretical empirical covariance:
-covlag0 <- filtration_covlagh_operator(theta, 0, n_grid, sigma_eigenvalues=sigma_eigenvalues, sigma_eigenfunctions=sigma_eigenfunctions)
+covlag0 <- filter_covlagh_operator(theta, 0, n_grid, sigma_eigenvalues = sigma_eigenvalues, sigma_eigenfunctions = sigma_eigenfunctions)
 if (lag == 0){
   covlagh <- covlag0
 } else {
-  covlagh <- filtration_covlagh_operator(sigma, theta, lag, n_grid, sigma_eigenvalues=sigma_eigenvalues, sigma_eigenfunctions=sigma_eigenfunctions)
+  covlagh <- filter_covlagh_operator(sigma, theta, lag, n_grid, sigma_eigenvalues = sigma_eigenvalues, sigma_eigenfunctions = sigma_eigenfunctions)
 }
 
 # surface plot of the theoretical covariance

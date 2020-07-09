@@ -1,7 +1,7 @@
-#' Numerically calculate the lag-h covariance operators for functional time series dynamics defined as a filtration of a white noise. The calculation is done by numerically integrating the inverse formula, i.e. the spectral density multiplied by exp(-1i*lag*omega)
+#' Numerically calculate the lag-h covariance operators for functional time series dynamics defined as a filter of a white noise. The calculation is done by numerically integrating the inverse formula, i.e. the spectral density multiplied by exp(-1i*lag*omega)
 #'
-#' @title Calculate the lag-h autocovariance operator for FTS defined as a filtration of a white noise
-#' @param theta The frequency response operator Theta(omega) of the filtration used for the definition of filtered white noise. A function of two variables, \code{omega} and \code{f}, where \code{f} is a vector (discretisation of a function) on which the operator Theta at frequency \code{omega} is applied onto. See the example bellow to inspect how you can define Theta(omega). The functions \code{\link{rank_one_tensor}} and \code{\link{kernel_operator}} might be useful for the definition of Theta. Must be well defined for frequencies (0,pi]. The interval [pi,2pi) is not used and is calculated by mirroring of (0,pi].
+#' @title Calculate the lag-h autocovariance operator for FTS defined as a filter of a white noise
+#' @param theta The frequency response operator Theta(omega) of the filter used for the definition of filtered white noise. A function of two variables, \code{omega} and \code{f}, where \code{f} is a vector (discretisation of a function) on which the operator Theta at frequency \code{omega} is applied onto. See the example bellow to inspect how you can define Theta(omega). The functions \code{\link{rank_one_tensor}} and \code{\link{kernel_operator}} might be useful for the definition of Theta. Must be well defined for frequencies (0,pi]. The interval [pi,2pi) is not used and is calculated by mirroring of (0,pi].
 #' @param lag The lag of the autocovariance to evaluate.
 #' @param n_grid Number of grid points (spatial resolution) of the discretisation of [0,1]^2 for the operator kernel to evaluate.
 #' @param sigma The covariance operator of the white noise innovation. A function of two variables, \code{x} and \code{y}, returns the value of the covariance kernel evaluated at (\code{x},\code{y}).
@@ -10,7 +10,7 @@
 #' @param n_grid_freq The grid points for the spectral density to evaluate at. Partition of [0,pi].
 #' @return lag-h autocovariance operator, matrix of size (\code{n_grid},\code{n_grid})
 #' @references Rubin, Panaretos. \emph{Simulation of stationary functional time series with given spectral density}. arXiv, 2020
-#' @seealso \code{\link{filtration_simulate}}
+#' @seealso \code{\link{filter_simulate}}
 #' @examples
 #' # Define the spectral density operator as an integral operator with kernel
 #' k_bbridge <- function(x,y) { pmin(x,y)-x*y }
@@ -27,7 +27,7 @@
 #' persp(covlagh)
 #' 
 #' @export
-filtration_covlagh_operator <- function(theta, lag, n_grid, sigma=NULL, sigma_eigenvalues=NULL, sigma_eigenfunctions=NULL, n_grid_freq=500){
+filter_covlagh_operator <- function(theta, lag, n_grid, sigma=NULL, sigma_eigenvalues=NULL, sigma_eigenfunctions=NULL, n_grid_freq=500){
   
   # if sigma is not defined as kernel, get it from the eigenvalues
   if (is.null(sigma)){

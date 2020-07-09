@@ -12,7 +12,7 @@ library(specsimfts)
 # innovation covariance operator
 sigma <- function(x,y) { pmin(x,y)}
 
-# define filtration
+# define filter (frequency response function)
 fractional_d <- 0.2
 theta <- function(omega,f){
   ( 2 * sin(omega/2) )^(-fractional_d) *
@@ -36,7 +36,7 @@ seed <- NULL # no rng seed is inicialized
 
 ## simulate in the spectral domain
 start_time <- Sys.time()
-fts_x <- filtration_simulate(theta, t_max, n_grid, seed_number=seed, sigma=sigma)
+fts_x <- filter_simulate(theta, t_max, n_grid, seed_number=seed, sigma=sigma)
 end_time <- Sys.time()
 print(end_time - start_time)
 
@@ -51,11 +51,11 @@ covlagh_empiric <- cov( t(fts_x[,(1+lag):t_max]), t(fts_x[,1:(t_max-lag)]))
 persp(covlagh_empiric, ticktype = "detailed") # surface plot. Warning: the visualisation takes long if "n_grid" is high
 
 # theoretical empirical covariance:
-covlag0 <- filtration_covlagh_operator(sigma, theta, 0, n_grid)
+covlag0 <- filter_covlagh_operator(sigma, theta, 0, n_grid)
 if (lag == 0){
   covlagh <- covlag0
 } else {
-  covlagh <- filtration_covlagh_operator(sigma, theta, lag, n_grid)
+  covlagh <- filter_covlagh_operator(sigma, theta, lag, n_grid)
 }
 
 # surface plot of the theoretical covariance
