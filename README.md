@@ -41,7 +41,7 @@ The simulation is the fastest and simplest if the FTS dynamics is defined direct
 
 ```{r}
 library("specsimfts")
-demo("demo_harmonicKL")
+demo("demo_CKL")
 ```
 
 ### FTS defined by its spectral density operators
