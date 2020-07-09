@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1594298341222.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "8071EFB7",
+    "lastKnownWriteTime" : 1594298366,
+    "last_content_update" : 1594298366658,
+    "path" : "~/GitHub/specsimfts/demo/demo_custom_filter_SVD.R",
+    "project_path" : "demo/demo_custom_filter_SVD.R",
+    "properties" : {
+        "cursorPosition" : "15,0",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

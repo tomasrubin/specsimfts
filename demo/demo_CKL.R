@@ -16,7 +16,7 @@ n_pc <- 100 # number of harmonic principal components (eigenfunctions) to use fo
 ########################################################################################
 ## simulate trajectory
 start_time <- Sys.time()
-fts_x <- HKL_simulate(harmonic_eigenvalues, harmonic_eigenfunctions, t_max, n_grid, n_pc)
+fts_x <- CKL_simulate(harmonic_eigenvalues, harmonic_eigenfunctions, t_max, n_grid, n_pc)
 end_time <- Sys.time()
 print( difftime(end_time,start_time, units="secs")) # print the time difference
 
@@ -32,11 +32,11 @@ covlagh_empiric <- cov( t(fts_x[,(1+lag):t_max]), t(fts_x[,1:(t_max-lag)]))
 persp(covlagh_empiric, ticktype = "detailed") # surface plot. Warning: the visualisation takes long if "n_grid" is high
 
 # theoretical empirical covariance
-covlag0 <- HKL_covlagh_operator(harmonic_eigenvalues, harmonic_eigenfunctions, 0, n_grid, n_pc=100) # you may edit n_pc for more precice evaluation
+covlag0 <- CKL_covlagh_operator(harmonic_eigenvalues, harmonic_eigenfunctions, 0, n_grid, n_pc=100) # you may edit n_pc for more precice evaluation
 if (lag == 0){
   covlagh <- covlag0
 } else {
-  covlagh <- HKL_covlagh_operator(harmonic_eigenvalues, harmonic_eigenfunctions, lag, n_grid, n_pc=100) # you may edit n_pc for more precice evaluation
+  covlagh <- CKL_covlagh_operator(harmonic_eigenvalues, harmonic_eigenfunctions, lag, n_grid, n_pc=100) # you may edit n_pc for more precice evaluation
 }
 
 # surface plot of the theoretical covariance
