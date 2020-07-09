@@ -84,7 +84,7 @@ demo("demo_custom_filter_SVD")
 
 ### FAR(FI)MA processes with general integral autoregressive and moving average operators
 
-The FARMA(4,3) process, being a special case of the FARFIMA(p,d,q) process with d=0, scrutinized in Example 4.3 in the paper is included as a demo file `demo_FARMA`. The code allows to include an arbitrary number of autoregressive and moving average operators defined as integral operators with given kernels.
+The FARMA(4,3) process, being a special case of the FARFIMA(p,d,q) process with d=0, scrutinized in Example 4.3 in the paper is included as a demo file `demo_FARMA`. The code allows to include an arbitrary number of autoregressive and moving average operators defined as integral operators with given kernels, and to set the fractional integration parameter d in the interval (-0.5, 0.5).
 
 ```{r}
 library("specsimfts")
