@@ -5,6 +5,26 @@ This is the accompanying R package `specsimfts` for the paper: Rubin and Panaret
 The package contains all the methods introduced in the aformentioned paper including all the presented examples as demos (see below) that are easy to use and modify by functional time series (FTS) practitioners.
 
 
+## Methods description
+
+The packages includes four simulation approaches (see below). Each approach includes a function to simulate a FTS sample as well as access the theoretical lagged autocovariance operator. The numerical calculation of these operator is performed by integrating the spectral density operators through the inverse formula. While the simulation are generally fast, the inverse formula integration can be slower.
+
+* Simulation using the harmonic Karhunen-Loeve expansion:
+    + functions: `CKL_simulate`, `CKL_covlagh_operator`,
+    + demo (Example 4.1 in the paper): `demo_CKL`.
+* Simulation with given spectral density operators (with no special structure),
+    + functions: `spec_density_simulate`, `spec_density_covlagh_operator`,
+    + demo (Example 4.1 in the paper): `demo_plain_spec_density`.
+* Simulation of filtered white noise:
+    + functions: `filter_simulate`, `filter_covlagh_operator`,
+    + demos (Example 4.2 in the paper): `demo_FARFIMA_as_filter`, `demo_FARFIMA_as_filter_SVD`,
+    + additional demos for custom-defined filter: `demo_custom_filter`, `demo_custom_filter_SVD`.
+* Simulation of general FAR(FI)MA processes:
+    + functions: `FARFIMA_test_stationarity`, `FARFIMA_simulate`, `FARFIMA_covlagh_operator`,
+    + demos (Example 4.3 in the paper): `demo_FARMA`, `demo_FARMA_SVD`,
+    + additional demo: `demo_FARFIMA_spec_vs_hybrid`.
+    
+See below on guidence on how to run the demos and to read their description.
 
 # Installation
 
@@ -31,6 +51,58 @@ If the eigendecomposition of spectral density operators is not available but we 
 ```{r}
 library("specsimfts")
 demo("demo_plain_spec_density")
+```
+###  FTS defined as filtered white noise
+
+The FARFIMA(1,0.2,0) process scrutinised in Example 4.2 can be written as a filtered white noise process while having a direct formula for the frequency response function because of the special structure of the autoregressive operator. The demo file `demo_FARFIMA_as_filter.R` contains this implementation together with benefiting from the analytic eigendecomposition of the innovation white noise processes.
+
+```{r}
+library("specsimfts")
+demo("demo_FARFIMA_as_filter")
+```
+
+If the innovation white noise processes does not admit analytically known eigendecomposition it can be calculated by the SVD algorithm, inspect the demo below.
+
+```{r}
+library("specsimfts")
+demo("demo_FARFIMA_as_filter_SVD")
+```
+
+As an additional demo file we provide with an extra example where the frequency response function is artificially defined using operations including rank-one-tensors, kernel integral operators, antiderivatives, and identity operators. See the comments in the demo file. The white noise admits Brownian motion covariance with known analytic eigendecomposition
+
+```{r}
+library("specsimfts")
+demo("demo_custom_filter")
+```
+
+or which can be numerically calculated by the SVD algorithm
+
+```{r}
+library("specsimfts")
+demo("demo_custom_filter_SVD")
+```
+
+### FAR(FI)MA processes with general integral autoregressive and moving average operators
+
+The FARMA(4,3) process, being a special case of the FARFIMA(p,d,q) process with d=0, scrutinized in Example 4.3 in the paper is included as a demo file `demo_FARMA`. The code allows to include an arbitrary number of autoregressive and moving average operators defined as integral operators with given kernels.
+
+```{r}
+library("specsimfts")
+demo("demo_FARMA")
+```
+
+While the above example uses the explicite finite-rank specification of the innovation white noise, the FAR(FI)MA processes can be also simulated with an arbitrary innovation noise whose eigendecomposition is numerically calculated by the SVD algorithm.
+
+```{r}
+library("specsimfts")
+demo("demo_FARMA_SVD")
+```
+
+Besides the fully spectral method which can be a bit slower for FARFIMA processes with non-trivial autoregressive part, we have also proposed a hybrid simulation method. The demo file below shows how to run the two approaches and compares their running times.
+
+```{r}
+library("specsimfts")
+demo("demo_FARFIMA_spec_vs_hybrid")
 ```
     
 # Contact
