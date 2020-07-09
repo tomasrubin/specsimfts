@@ -9,7 +9,7 @@ The package contains all the methods introduced in the aformentioned paper inclu
 
 The packages includes four simulation approaches (see below). Each approach includes a function to simulate a FTS sample as well as access the theoretical lagged autocovariance operator. The numerical calculation of these operator is performed by integrating the spectral density operators through the inverse formula. While the simulation are generally fast, the inverse formula integration can be slower.
 
-* Simulation using the harmonic Karhunen-Loeve expansion:
+* Simulation using the Cramer-Karhunen-Loeve expansion:
     + functions: `CKL_simulate`, `CKL_covlagh_operator`,
     + demo (Example 4.1 in the paper): `demo_CKL`.
 * Simulation with given spectral density operators (with no special structure),
