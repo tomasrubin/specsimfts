@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1594318570737.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3115447233",
+    "id" : "721647C2",
+    "lastKnownWriteTime" : 1594322121,
+    "last_content_update" : 1594322121180,
+    "path" : "C:/C-epfl results/Options/aapl/explore_appl.R",
+    "project_path" : null,
+    "properties" : {
+        "cursorPosition" : "14,85",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
