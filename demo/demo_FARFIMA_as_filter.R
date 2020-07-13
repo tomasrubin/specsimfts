@@ -31,12 +31,13 @@ sigma_eigenfunctions <- function(n,x) { sqrt(2)*sin((n-0.5)*pi*x) }
 
 
 # define filter
-fractional_d <- 0.2
+fractional_d <- +0.2
 theta <- function(omega,f){
   ( 2 * sin(omega/2) )^(-fractional_d) *
     (f + (exp(-1i*omega)*0.34) /(1-exp(-1i*omega)*0.34*sqrt(pi)/2*pracma::erfi(1)) *
        rank_one_tensor( function(x){exp((x^2)/2)}, function(x){exp((x^2)/2)}, f ))
 }
+
 
 
 ## simulation setting
@@ -73,7 +74,7 @@ covlag0 <- filter_covlagh_operator(theta, 0, n_grid, sigma_eigenvalues=sigma_eig
 if (lag == 0){
   covlagh <- covlag0
 } else {
-  covlagh <- filter_covlagh_operator(sigma, theta, lag, n_grid, sigma_eigenvalues=sigma_eigenvalues, sigma_eigenfunctions=sigma_eigenfunctions)
+  covlagh <- filter_covlagh_operator(theta, lag, n_grid, sigma_eigenvalues=sigma_eigenvalues, sigma_eigenfunctions=sigma_eigenfunctions)
 }
 
 # surface plot of the theoretical covariance

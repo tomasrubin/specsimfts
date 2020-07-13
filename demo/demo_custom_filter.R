@@ -1,6 +1,6 @@
 ###############################################################################################
 # This example demonstrates how to simulate a filtered white noise process defined
-# in the paper using a custom filter and Brownian motion innovation covariance.
+# using a custom filter (definition in the comments below) and Brownian motion innovation covariance.
 ###############################################################################################
 
 library(specsimfts)

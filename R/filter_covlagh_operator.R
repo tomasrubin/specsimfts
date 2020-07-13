@@ -12,22 +12,57 @@
 #' @references Rubin, Panaretos. \emph{Simulation of stationary functional time series with given spectral density}. arXiv, 2020
 #' @seealso \code{\link{filter_simulate}}
 #' @examples
-#' # Define the spectral density operator as an integral operator with kernel
-#' k_bbridge <- function(x,y) { pmin(x,y)-x*y }
-#' spec_density <- function( omega, x,y ){ 1/(1-0.9 *cos(omega)) * k_bbridge( (x-omega/pi)%%1, (y-omega/pi)%%1  ) }
+#' # define the white noise covariance operator (Brownian motion)
+#' sigma <- function(x,y) { pmin(x,y) }
+#'
+#' # # Alternatively defined the sigma covariance through its eigendecomposition, and supply it to the function 'filter_simulate'
+#' # sigma_eigenvalues <- function(n) { 1/((n-0.5)*pi)^2 }
+#' # sigma_eigenfunctions <- function(n,x) { sqrt(2)*sin((n-0.5)*pi*x) }
+#' 
+#' # # Alternatively, define the innovation covariance as low-rank (through a list)
+#' # sigma_eigenvalues <- c(1, 0.6, 0.3, 0.1, 0.1, 0.1, 0.05, 0.05, 0.05, 0.05)
+#' # sigma_eigenfunctions <- list(
+#' #   function(x){ sin(2*pi*x) },
+#' #   function(x){ cos(2*pi*x) },
+#' #   function(x){ sin(4*pi*x) },
+#' #   function(x){ cos(4*pi*x) },
+#' #   function(x){ sin(6*pi*x) },
+#' #   function(x){ cos(6*pi*x) },
+#' #   function(x){ sin(8*pi*x) },
+#' #   function(x){ cos(8*pi*x) },
+#' #   function(x){ sin(10*pi*x) },
+#' #   function(x){ cos(10*pi*x) }
+#' # )
+#' 
+#' # define filter
+#' theta <- function(omega,f){
+#' 2*f+
+#'  1i*rev(f) +
+#'  omega*cumsum(f)/length(f) +
+#'  rank_one_tensor( function(x){sin(x)}, function(x){exp(x)}, f ) +
+#'  kernel_operator( function(x,y){sin(omega+x+2*y)}, f )
+#' }
+#' 
+#' # simulation setting
+#' t_max <- 1000
+#' n_grid <- 101
 #' 
 #' # evaluation setting
 #' lag <- 1 # change here to evaluate different lag-h autocovariance operator. put "lag <- 0" for lag-0 covariance operator
 #' n_grid <- 101
 #' 
-#' # calculate the lag-h autocovariance operator
-#' covlagh <- spec_density_covlagh_operator(spec_density, lag, n_grid)
+#' # numerically evaluate lag-h autocovariance operator
+#' lag <- 0
+#' covlagh <- filter_covlagh_operator(theta, lag, n_grid, sigma=sigma)
+#' 
+#' # # Alternatively simulate with the known eigendecomposition of sigma
+#' # covlagh <- filter_covlagh_operator(theta, lag, n_grid, sigma_eigenfunctions = sigma_eigenfunctions, sigma_eigenvalues=sigma_eigenvalues)
 #' 
 #' # visualise as a surface plot
 #' persp(covlagh)
 #' 
 #' @export
-filter_covlagh_operator <- function(theta, lag, n_grid, sigma=NULL, sigma_eigenvalues=NULL, sigma_eigenfunctions=NULL, n_grid_freq=500){
+filter_covlagh_operator <- function(theta, lag, n_grid, sigma=NULL, sigma_eigenvalues=NULL, sigma_eigenfunctions=NULL, n_grid_freq=1000){
   
   # if sigma is not defined as kernel, get it from the eigenvalues
   if (is.null(sigma)){
@@ -50,9 +85,10 @@ filter_covlagh_operator <- function(theta, lag, n_grid, sigma=NULL, sigma_eigenv
     }
     
     spec_density <- 1/(2*pi) * theta_eval %*% sigma_eval %*% Conj(t(theta_eval))
-    int <- int + spec_density * exp(1i*omega*lag) *pi /n_grid_freq 
+    int <- int + spec_density * exp(1i*omega*lag) * pi /n_grid_freq 
+    int <- int + t(spec_density) * exp(-1i*omega*lag) * pi /n_grid_freq # contribution on (pi,2pi)
   }
   
-  return( Re(int + t(int)) )
+  return( Re(int) )
   
 }

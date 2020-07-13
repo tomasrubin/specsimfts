@@ -84,7 +84,7 @@ FARFIMA_test_stationarity <- function(FARFIMA_pars, n_grid=101){
     # compose the AR operator in the state-space
     composed_a <- matrix(0, nrow=ar_order*n_grid, ncol=ar_order*n_grid)
     for (ii in 1:ar_order){
-      composed_a[ 1:n_grid , ((ii-1)*n_grid+1):(ii*n_grid)] <- -operators_ar_eval[[ii]]
+      composed_a[ 1:n_grid , ((ii-1)*n_grid+1):(ii*n_grid)] <- operators_ar_eval[[ii]]
     }
     if (ar_order>1){
       for (ii in 1:(ar_order-1)){

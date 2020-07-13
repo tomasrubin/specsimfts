@@ -36,9 +36,11 @@ spec_density_covlagh_operator <- function(spec_density, lag, n_grid, n_grid_freq
   int <- array(0, dim=c(n_grid,n_grid))
   for (k in 1:n_grid_freq){
     omega <- pi*k/n_grid_freq # 0..pi
-    int <- int + spec_density(omega,grid_matrix,t(grid_matrix))* exp(1i*omega*lag) *pi /n_grid_freq 
+    spec_density_eval <- spec_density(omega,grid_matrix,t(grid_matrix))
+    int <- int + spec_density_eval * exp(1i*omega*lag) *pi /n_grid_freq 
+    int <- int + t(spec_density_eval) * exp(-1i*omega*lag) *pi /n_grid_freq 
   }
   
-  return( Re(int + t(int)) )
+  return( Re(int) )
   
 }

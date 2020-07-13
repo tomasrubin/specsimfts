@@ -234,7 +234,7 @@ FARFIMA_simulate <- function(FARFIMA_pars, t_max, n_grid, seed_number=NULL, hybr
     if ((ar_order>0) & (!hybrid_ar)){ # only if I'm NOT doing the AR in the time domain
       ar_part <- diag(n_grid)
       for (j in 1:ar_order){
-        ar_part <- ar_part + operators_ar_eval[[j]] * exp(-1i*omega*j) / n_grid
+        ar_part <- ar_part - operators_ar_eval[[j]] * exp(-1i*omega*j) / n_grid
       }
       f <- solve(ar_part, f)
     }
@@ -265,7 +265,7 @@ FARFIMA_simulate <- function(FARFIMA_pars, t_max, n_grid, seed_number=NULL, hybr
     if ((ar_order>0) & (!hybrid_ar)){ # only if I'm NOT doing the AR in the time domain
       ar_part <- diag(n_grid)
       for (j in 1:ar_order){
-        ar_part <- ar_part + operators_ar_eval[[j]] * exp(-1i*omega*j) / n_grid
+        ar_part <- ar_part - operators_ar_eval[[j]] * exp(-1i*omega*j) / n_grid
       }
       f <- solve(ar_part, f)
     }

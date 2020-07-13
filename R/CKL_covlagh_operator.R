@@ -22,7 +22,7 @@
 #' n_pc <- 100
 #' 
 #' # calculate the lag-h autocovariance operator
-#' covlagh <- HKL_covlagh_operator(harmonic_eigenvalues, harmonic_eigenfunctions, lag, n_grid, n_pc)
+#' covlagh <- CKL_covlagh_operator(harmonic_eigenvalues, harmonic_eigenfunctions, lag, n_grid, n_pc)
 #' 
 #' # visualise as a surface plot
 #' persp(covlagh)
@@ -40,7 +40,7 @@ CKL_covlagh_operator <- function(harmonic_eigenvalues, harmonic_eigenfunctions, 
   integrand <- function(omega){ 
     ret <- array(0, dim=c(n_grid,n_grid))
     for (n in 1:n_pc){
-      ret <- ret + Re( harmonic_eigenvalues(omega, n) * outer( harmonic_eigenfunctions(omega,n,grid), harmonic_eigenfunctions(omega,n,grid)) * exp(1i*omega*lag) )
+      ret <- ret + harmonic_eigenvalues(omega, n) * outer( harmonic_eigenfunctions(omega,n,grid), harmonic_eigenfunctions(omega,n,grid))
     }
     return(ret)
   }
@@ -49,11 +49,13 @@ CKL_covlagh_operator <- function(harmonic_eigenvalues, harmonic_eigenfunctions, 
   int <- array(0, dim=c(n_grid,n_grid))
   for (k in 1:n_grid_freq){
     omega <- pi*k/n_grid_freq # 0..pi
-    int <- int + integrand(omega) *pi /n_grid_freq
+    integrand_eval <- integrand(omega) 
+    int <- int + integrand_eval * exp(1i*omega*lag) * pi /n_grid_freq
+    int <- int + t(integrand_eval) * exp(-1i*omega*lag) * pi /n_grid_freq
   }
   
   
-  return( Re(int + t(int)) )
+  return( Re(int) )
   
   
 }

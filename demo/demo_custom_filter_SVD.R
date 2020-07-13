@@ -1,6 +1,6 @@
 ###############################################################################################
 # This example demonstrates how to simulate a filtered white noise process defined
-# in the paper using a custom filter and Brownian motion innovation covariance.
+# using a custom filter (definition in the comments below) and Brownian motion innovation covariance.
 ###############################################################################################
 
 library(specsimfts)
@@ -19,7 +19,7 @@ sigma <- function(x,y) { pmin(x,y) }
 theta <- function(omega,f){
   2*f+ # 2f(x)
     1i*rev(f) + # i*f(1-x)
-    omega*cumsum(f)/length(f) + # omega \int_0^x f(y)dy
+    omega*cumsum(f)/length(f) + # omega * \int_0^x f(y)dy
     rank_one_tensor( function(x){sin(x)}, function(x){exp(x)}, f ) + # ((v_1) \otimes (v_2))(f)(x) with (v1)(x) = sin(x) and (v2)(x) = exp(x)
     kernel_operator( function(x,y){sin(omega+x+2*y)}, f ) # \int_0^1 K(x,y)f(y)dy with K_omega(x,y) = sin(omega+x+2y)
 }

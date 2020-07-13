@@ -36,7 +36,7 @@ apply_AR_part <- function(fts_x, operators_ar){
     for (t in (1+ar_order):t_max){
       fts_x_new[,t] <- fts_x[,t] # noise contribution
       for (j in 1:ar_order){
-        fts_x_new[,t] <- fts_x_new[,t] - ar_evaluation[[j]] %*% fts_x_new[,t-j] / n_grid
+        fts_x_new[,t] <- fts_x_new[,t] + ar_evaluation[[j]] %*% fts_x_new[,t-j] / n_grid
       }
     }
     

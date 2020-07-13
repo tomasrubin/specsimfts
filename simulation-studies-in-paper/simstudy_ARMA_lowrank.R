@@ -17,7 +17,7 @@ library(specsimfts)
 
 # global settings
 global_setting_sim_run_n <- 100
-global_setting_cores <- 4
+global_setting_cores <- 7
 registerDoParallel(global_setting_cores)
 methods <- c("lowrank_spec","lowrank_hybrid","svd_spec","svd_hybrid","space")
 methods_run_now <- 1:5

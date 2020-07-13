@@ -22,13 +22,13 @@
 #' n_pc <- 100
 #' 
 #' # simulate trajectory
-#' fts_x <- f_CKL_simulate(harmonic_eigenvalues, harmonic_eigenfunctions, t_max, n_grid, n_pc)
+#' fts_x <- CKL_simulate(harmonic_eigenvalues, harmonic_eigenfunctions, t_max, n_grid, n_pc)
 #' 
 #' # display the first curve
 #' plot( fts_x[,1], type='l' )
 #' 
 #' @export
-HKL_simulate <- function(harmonic_eigenvalues, harmonic_eigenfunctions, t_max, n_grid, n_pc, seed_number = NULL, include_freq_zero = F){
+CKL_simulate <- function(harmonic_eigenvalues, harmonic_eigenfunctions, t_max, n_grid, n_pc, seed_number = NULL, include_freq_zero = F){
   
   ## random seed if assigned
   if (!is.null(seed_number)){ set.seed(seed_number) }

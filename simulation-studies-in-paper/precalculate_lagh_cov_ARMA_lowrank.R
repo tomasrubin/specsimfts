@@ -3,12 +3,8 @@ setwd("C:/Users/tomas/OneDrive/Documents/GitHub/specsimfts/simulation-studies-in
 
 library(sde)
 library(pracma)
-library(foreach)
-library(doParallel)
 library(mvtnorm)
 
-global_setting_cores <- 7
-registerDoParallel(global_setting_cores)
 
 
 
@@ -97,7 +93,7 @@ f_calculate_lagh <- function(n_grid, lags_all){
     ar_part <- diag(n_grid)
     if (ar_order > 0){
       for (j in 1:ar_order){
-        ar_part <- ar_part + operators_ar_eval[[j]] * exp(-1i*j*omega)
+        ar_part <- ar_part - operators_ar_eval[[j]] * exp(-1i*j*omega)
       }
     }
     ar_part_inv <- solve(ar_part)
@@ -127,7 +123,7 @@ f_calculate_lagh <- function(n_grid, lags_all){
   
 }
 
-for (n_grid in c(101)){
+for (n_grid in c(101,201,501,1001)){
   
   if (n_grid == 101){
     lags_all <- c(0,1,2,3,5,10,20,30,40,60,80,100)
@@ -140,7 +136,7 @@ for (n_grid in c(101)){
   # save lags
   for (lag_i in 1:length(lags_all)){
     lag <- lags_all[lag_i]
-    name <- paste("simstudy/arma_lowrank_covs/arma_lowrank_lag_",lag,"_ngrid_",n_grid,".txt",sep="")
+    name <- paste("arma_lowrank_covs/arma_lowrank_lag_",lag,"_ngrid_",n_grid,".txt",sep="")
     print(name)
     write.table(Re(cov_lags[lag_i,,]), file = name)
   }

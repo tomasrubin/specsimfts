@@ -11,7 +11,7 @@ harmonic_eigenfunctions <- function(omega, n, x){ sqrt(2)*sin( n*(pi*x-omega)  )
 ## simulation setting
 t_max <- 1000 # time horizon to be simulated
 n_grid <- 101 # spatial resolution for visualisation on discretisation of [0,1]
-n_pc <- 100 # number of harmonic principal components (eigenfunctions) to use for simulation
+n_pc <- 500 # number of harmonic principal components (eigenfunctions) to use for simulation
 
 ########################################################################################
 ## simulate trajectory

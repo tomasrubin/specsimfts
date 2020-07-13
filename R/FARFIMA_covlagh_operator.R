@@ -119,7 +119,7 @@ FARFIMA_covlagh_operator <- function(FARFIMA_pars, lag, n_grid, n_grid_freq=500)
     ar_part <- diag(n_grid)
     if (ar_order > 0){
       for (j in 1:ar_order){
-        ar_part <- ar_part + operators_ar_eval[[j]] * exp(-1i*j*omega)
+        ar_part <- ar_part - operators_ar_eval[[j]] * exp(-1i*j*omega)
       }
     }
     ar_part_inv <- solve(ar_part)

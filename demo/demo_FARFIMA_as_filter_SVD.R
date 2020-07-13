@@ -51,11 +51,11 @@ covlagh_empiric <- cov( t(fts_x[,(1+lag):t_max]), t(fts_x[,1:(t_max-lag)]))
 persp(covlagh_empiric, ticktype = "detailed") # surface plot. Warning: the visualisation takes long if "n_grid" is high
 
 # theoretical empirical covariance:
-covlag0 <- filter_covlagh_operator(sigma, theta, 0, n_grid)
+covlag0 <- filter_covlagh_operator(theta, 0, n_grid, sigma=sigma)
 if (lag == 0){
   covlagh <- covlag0
 } else {
-  covlagh <- filter_covlagh_operator(sigma, theta, lag, n_grid)
+  covlagh <- filter_covlagh_operator(theta, lag, n_grid, sigma=sigma)
 }
 
 # surface plot of the theoretical covariance
