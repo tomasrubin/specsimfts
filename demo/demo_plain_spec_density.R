@@ -32,13 +32,13 @@ plot( fts_x[,1], type='l' )
 
 #########################################################################################
 ## compare the empirical and theoretical autocovariance operator
-lag <- 1 # user input here
+lag <- 0 # user input here
 
 # calculate the empirical covariance operator
 covlagh_empiric <- cov( t(fts_x[,(1+lag):t_max]), t(fts_x[,1:(t_max-lag)]))
 persp(covlagh_empiric, ticktype = "detailed") # surface plot. Warning: the visualisation takes long if "n_grid" is high
 
-# theoretical empirical covariance
+# theoretical empirical covariance - the numerical integration can take long !!!
 covlag0 <- spec_density_covlagh_operator(spec_density, 0, n_grid)
 if (lag == 0){
   covlagh <- covlag0

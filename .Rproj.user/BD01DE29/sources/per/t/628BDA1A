@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1594728684506.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "498933294",
+    "id" : "628BDA1A",
+    "lastKnownWriteTime" : 1594728747,
+    "last_content_update" : 1594728747298,
+    "path" : "~/GitHub/specsimfts/demo/demo_FARMA.R",
+    "project_path" : "demo/demo_FARMA.R",
+    "properties" : {
+        "cursorPosition" : "89,27",
+        "scrollLine" : "60"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

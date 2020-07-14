@@ -40,13 +40,13 @@ fts_x <- filter_simulate(theta, t_max, n_grid, seed_number=seed, sigma=sigma)
 end_time <- Sys.time()
 print(end_time - start_time)
 
-# plot one trajectory
+# display the first curve
 plot(fts_x[,1], type='l')
 
 ## compare the empirical and theoretical autocovariance operator
-lag <- 1 # user input here
+lag <- 0 # user input here
 
-# calculate the empirical covariance operator
+# calculate the empirical covariance operator - the numerical integration can take long !!!
 covlagh_empiric <- cov( t(fts_x[,(1+lag):t_max]), t(fts_x[,1:(t_max-lag)]))
 persp(covlagh_empiric, ticktype = "detailed") # surface plot. Warning: the visualisation takes long if "n_grid" is high
 
