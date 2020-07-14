@@ -10,7 +10,7 @@
 #' @param n_grid_freq The grid points for the spectral density to evaluate at. Partition of [0,pi].
 #' @return lag-h autocovariance operator, matrix of size (\code{n_grid},\code{n_grid})
 #' @references Rubin, Panaretos. \emph{Simulation of stationary functional time series with given spectral density}. arXiv, 2020
-#' @seealso \code{\link{HKL_simulate}}
+#' @seealso \code{\link{CKL_simulate}}
 #' @examples
 #' # Define the eigenvalues and eigenfunction of the functional time series
 #' harmonic_eigenvalues <- function( omega, n ){ 1/( (1-0.9 *cos(omega)) * (n*pi)^2 ) }

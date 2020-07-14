@@ -1,7 +1,7 @@
 #' Simulate functional time series sample defined through their spectral density. The simulation routine needs to
 #' perform the SVD decomposition at each freaquency, therefore the simulation is quite slow. For a speedy simulation
 #' try to define the spectral density operator through its harmonic Karhunen-Loeve expansion (\code{\link{spec_density_simulate}}), or by the
-#' white noise filtration approach (\code{\link{spec_density_simulate}}).
+#' white noise filter approach (\code{\link{spec_density_simulate}}).
 #' 
 #'
 #' @title Simulate a FTS given by its spectral density operator
@@ -13,7 +13,7 @@
 #' @param include_freq_zero If set \code{TRUE}, the zero frequency is included for simulation in the spectral domain. Set \code{FALSE} for processes with singularity at frequency zero, e.g. the long-range dependent FARFIMA(p,d,q) process.
 #' @return functional time series sample, matrix of size (\code{n_grid},\code{t_max})
 #' @references Rubin, Panaretos. \emph{Simulation of stationary functional time series with given spectral density}. arXiv, 2020
-#' @seealso \code{\link{spec_density_covlagh_operator}} \code{\link{HKL_simulate}}
+#' @seealso \code{\link{spec_density_covlagh_operator}} \code{\link{CKL_simulate}}
 #' @examples
 #' # Define the spectral density operator as an integral operator with kernel
 #' k_bbridge <- function(x,y) { pmin(x,y)-x*y }
