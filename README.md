@@ -74,7 +74,7 @@ library("specsimfts")
 demo("demo_FARFIMA_as_filter_SVD")
 ```
 
-As an additional demo file we provide with an extra example where the frequency response function is artificially defined using operations including rank-one-tensors, kernel integral operators, antiderivatives, and identity operators. See the comments in the demo file. The white noise admits Brownian motion covariance with known analytic eigendecomposition
+As an additional demo file we provide with an extra example where the frequency response function is quite generally defined using operations including rank-one-tensors, kernel integral operators, antiderivatives, and identity operators. See the comments in the demo file. The white noise admits Brownian motion covariance with known analytic eigendecomposition
 
 ```{r}
 library("specsimfts")
