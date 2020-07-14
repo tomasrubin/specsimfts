@@ -28,7 +28,7 @@ The packages includes four simulation approaches (see below). Each approach incl
     
 The functions arguments and outputs are documented within the package. Run for example `?CKL_simulate` to see the documentation.
 
-See below on guidence on how to run the demos and to read their description.
+
 
 ## Installation
 
