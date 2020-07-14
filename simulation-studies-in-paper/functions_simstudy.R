@@ -139,7 +139,7 @@ simulation_run_ARMA_lowrank <- function( t_max, n_grid, lag_to_compare, method_i
   if (method_i %in% c(2,4)){ hybrid_ar <- TRUE }
   
   # simulate trajectory HERE
-  fts_x <- FARIMA_simulate(farima_pars, t_max, n_grid, seed_number=seed_number, hybrid_ar=hybrid_ar)
+  fts_x <- FARFIMA_simulate(farima_pars, t_max, n_grid, seed_number=seed_number, hybrid_ar=hybrid_ar)
   
   # ending time
   end_time  = Sys.time()

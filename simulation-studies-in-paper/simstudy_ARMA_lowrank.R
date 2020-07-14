@@ -20,7 +20,7 @@ global_setting_sim_run_n <- 100
 global_setting_cores <- 7
 registerDoParallel(global_setting_cores)
 methods <- c("lowrank_spec","lowrank_hybrid","svd_spec","svd_hybrid","space")
-methods_run_now <- 1:5
+methods_run_now <- 1:4
 
 
 # distribute all runs
@@ -71,12 +71,12 @@ for (ii in methods_run_now){
 
 ############################################################################################################################################
 ## precalculate autocovariance operators
-source("precalculate_lagh_cov_ARMA_lowrank.R")
+# source("precalculate_lagh_cov_ARMA_lowrank.R")
 
 ############################################################################################################################################
 ## run it
 
-foreach(run_i = 1:sim_runs, .combine=c, .packages=c('pracma','sde','mvtnorm')) %dopar% {
+foreach(run_i = 1:sim_runs, .combine=c, .packages=c('pracma','sde','mvtnorm','specsimfts')) %dopar% {
 # for(run_i in 1:sim_runs){
 
   
