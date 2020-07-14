@@ -1,0 +1,1 @@
+This folder is intentionally left empty. It will be filled in with precalculated autocovariance operators if the corresponding simulation study is executed.
