@@ -30,7 +30,7 @@ See below on guidence on how to run the demos and to read their description.
 
 ## Installation
 
-Run this code in your R concole (install first the package `devtools` if needed):
+Run this code in your R concole (install first the package `devtools` if not installed yet):
 
 ```{r}
 library("devtools")
