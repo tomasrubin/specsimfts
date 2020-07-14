@@ -15,7 +15,7 @@ kernel_operator(ker, f)
 Vector of the same size as \code{f} representing the discretized function - the result of the application "ker(f)".
 }
 \description{
-This function applies the integral operator with the kernel \code{ker} onto the function \code{f}. Can be useful for defining custom filtration to be used for the filtered white noise simulation approach, see \code{\link{filtration_simulate}}.
+This function applies the integral operator with the kernel \code{ker} onto the function \code{f}. Can be useful for defining custom filter to be used for the filtered white noise simulation approach, see \code{\link{filter_simulate}}.
 }
 \examples{
 # define kernel
@@ -36,5 +36,5 @@ legend("topleft",c("f","ker(f)"), col=c("blue","red"), lty=1)
 Rubin, Panaretos. \emph{Simulation of stationary functional time series with given spectral density}. arXiv, 2020
 }
 \seealso{
-\code{\link{rank_one_tensor}} \code{\link{filtration_simulate}}
+\code{\link{rank_one_tensor}} \code{\link{filter_simulate}}
 }

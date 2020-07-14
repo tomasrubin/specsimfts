@@ -37,5 +37,5 @@ legend("topleft",c("f","<f,g2>g1"), col=c("blue","red"), lty=1)
 Rubin, Panaretos. \emph{Simulation of stationary functional time series with given spectral density}. arXiv, 2020
 }
 \seealso{
-\code{\link{kernel_operator}} \code{\link{filtration_simulate}}
+\code{\link{kernel_operator}} \code{\link{filter_simulate}}
 }

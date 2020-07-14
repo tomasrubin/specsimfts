@@ -33,7 +33,7 @@ functional time series sample, matrix of size (\code{n_grid},\code{t_max})
 Simulate functional time series sample defined through their spectral density. The simulation routine needs to
 perform the SVD decomposition at each freaquency, therefore the simulation is quite slow. For a speedy simulation
 try to define the spectral density operator through its harmonic Karhunen-Loeve expansion (\code{\link{spec_density_simulate}}), or by the
-white noise filtration approach (\code{\link{spec_density_simulate}}).
+white noise filter approach (\code{\link{spec_density_simulate}}).
 }
 \examples{
 # Define the spectral density operator as an integral operator with kernel
@@ -56,5 +56,5 @@ plot( fts_x[,1], type='l' )
 Rubin, Panaretos. \emph{Simulation of stationary functional time series with given spectral density}. arXiv, 2020
 }
 \seealso{
-\code{\link{spec_density_covlagh_operator}} \code{\link{HKL_simulate}}
+\code{\link{spec_density_covlagh_operator}} \code{\link{CKL_simulate}}
 }

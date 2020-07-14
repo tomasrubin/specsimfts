@@ -2,10 +2,10 @@
 
 export(BM_eig)
 export(CKL_covlagh_operator)
+export(CKL_simulate)
 export(FARFIMA_covlagh_operator)
 export(FARFIMA_simulate)
 export(FARFIMA_test_stationarity)
-export(HKL_simulate)
 export(apply_AR_part)
 export(filter_covlagh_operator)
 export(filter_simulate)

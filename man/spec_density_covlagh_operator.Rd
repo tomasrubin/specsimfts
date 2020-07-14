@@ -42,5 +42,5 @@ persp(covlagh)
 Rubin, Panaretos. \emph{Simulation of stationary functional time series with given spectral density}. arXiv, 2020
 }
 \seealso{
-\code{\link{HKL_simulate}}
+\code{\link{CKL_simulate}}
 }
