@@ -26,6 +26,8 @@ The packages includes four simulation approaches (see below). Each approach incl
     + demos (Example 4.3 in the paper): `demo_FARMA`, `demo_FARMA_SVD`,
     + additional demo: `demo_FARFIMA_spec_vs_hybrid`.
     
+The functions arguments and outputs are documented within the package. Run for example `?CKL_simulate` to see the documentation.
+
 See below on guidence on how to run the demos and to read their description.
 
 ## Installation
