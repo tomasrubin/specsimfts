@@ -37,7 +37,7 @@ install_github("tomasrubin/specsimfts")
 
 ## Running the demos
 
-### FTS defined through eigendecomposition of its spectral density operators
+### FTS specified through eigendecomposition of its spectral density operators
 
 The simulation is the fastest and simplest if the FTS dynamics is defined directly through the eigendecomposition of its spectral density operators. The simulation method then essentially mimics the Cramer-Karhunen-Loeve expansion.
 
@@ -46,7 +46,7 @@ library("specsimfts")
 demo("demo_CKL")
 ```
 
-### FTS defined by its spectral density operators
+### FTS specified by its spectral density kernels
 
 If the eigendecomposition of spectral density operators is not available but we still define the FTS dynamics directly by its spectral density operator at each frequency, the spectral density operator needs to be discretised and decomposed by the SVD algorithm at each frequency. This method allows to simulate any dynamics defined by the spectral density operator but scales badly in terms of computational time as the discretisation resolution increases.
 
@@ -54,7 +54,7 @@ If the eigendecomposition of spectral density operators is not available but we 
 library("specsimfts")
 demo("demo_plain_spec_density")
 ```
-###  FTS defined as filtered white noise
+###  FTS specified as filtered white noise
 
 The FARFIMA(1,0.2,0) process scrutinised in Example 4.2 can be written as a filtered white noise process while having a direct formula for the frequency response function because of the special structure of the autoregressive operator. The demo file `demo_FARFIMA_as_filter.R` contains this implementation together with benefiting from the analytic eigendecomposition of the innovation white noise processes.
 
@@ -84,7 +84,7 @@ library("specsimfts")
 demo("demo_custom_filter_SVD")
 ```
 
-### FAR(FI)MA processes with general integral autoregressive and moving average operators
+### FAR(FI)MA processes with general autoregressive and moving average operators (integral operators specified by their kernels)
 
 The FARMA(4,3) process, being a special case of the FARFIMA(p,d,q) process with d=0, scrutinized in Example 4.3 in the paper is included as a demo file `demo_FARMA`. The code allows to include an arbitrary number of autoregressive and moving average operators defined as integral operators with given kernels, and to set the fractional integration parameter d in the interval (-0.5, 0.5).
 
