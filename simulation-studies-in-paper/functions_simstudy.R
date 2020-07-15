@@ -346,7 +346,7 @@ simulate_ARMA_space <- function(arma_pars,t_max,n_grid, burn_in = 500, seed_numb
     # AR part
     if (ar_order > 0){
       for (ii in 1:ar_order){
-        fts_x[,t] <- fts_x[,t] - t(arma_pars_space$operators_ar[[ii]] %*% fts_x[,t-ii]) / n_grid
+        fts_x[,t] <- fts_x[,t] + t(arma_pars_space$operators_ar[[ii]] %*% fts_x[,t-ii]) / n_grid
       }
     }
     
