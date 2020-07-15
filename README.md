@@ -2,7 +2,7 @@
 
 This is the accompanying R package `specsimfts` for the paper:
 
-**Rubin and Panaretos (2020). "Simulation of stationary functional time series with given spectral density".**
+(to be submitted soon)**Rubin and Panaretos (2020). "Simulation of stationary functional time series with given spectral density".**
 
 The package contains all the methods introduced in the aformentioned paper including all the presented examples as demos (see below) that are easy to use and modify by functional time series (FTS) practitioners.
 
