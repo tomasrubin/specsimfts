@@ -9,15 +9,17 @@ The package contains all the methods introduced in the aformentioned paper inclu
 
 ## Methods description
 
-The packages includes four simulation approaches (see below). Each approach includes a function to simulate a FTS sample and another one to calculate the theoretical lagged autocovariance operator. The numerical calculation of these operators is performed by integrating the spectral density operators through the inverse formula. While the simulation methods are generally fast, the inverse formula integration can be slower.
+For the background to the simulation methods refer to the article [1].
 
-* Simulation using the Cramer-Karhunen-Loeve expansion:
+The packages includes four simulation approaches (see below) depending how the functional time series dynamics is specified. Each approach includes a function to simulate a FTS sample and another one to calculate the theoretical lagged autocovariance operator. The numerical calculation of these operators is performed by integrating the spectral density operators through the inverse formula. While the simulation methods are generally fast, the inverse formula integration can be slower.
+
+* Specification by eigendecomposition of spectral density operators:
     + functions: `CKL_simulate`, `CKL_covlagh_operator`,
     + demo (Example 4.1 in the paper): `demo_CKL`.
-* Simulation with given spectral density operators (with no special structure),
+* Specification of spectral density operators by their kernels (with no special structure):
     + functions: `spec_density_simulate`, `spec_density_covlagh_operator`,
     + demo (Example 4.1 in the paper): `demo_plain_spec_density`.
-* Simulation of filtered white noise:
+* Specification as filtered white noise:
     + functions: `filter_simulate`, `filter_covlagh_operator`,
     + demos (Example 4.2 in the paper): `demo_FARFIMA_as_filter`, `demo_FARFIMA_as_filter_SVD`,
     + additional demos for custom-defined filter: `demo_custom_filter`, `demo_custom_filter_SVD`.
@@ -113,8 +115,10 @@ demo("demo_FARFIMA_spec_vs_hybrid")
 
 ## Usage 
 
-Individuals are free to use the codes for the purpose academic research, provided it is properly acknowledged and the paper *Rubin and Panaretos (2020) "Simulation of stationary functional time series with given spectral density"* is cited. For any other use, permission must first be arranged with the author. Unless otherwise specified, the author of the codes is Tomas Rubin (tomas.rubin@gmail.com). Please contact me if you find errors in the codes or if you have feature requests.
+Individuals are free to use the codes for the purpose academic research, provided it is properly acknowledged and [1] is cited. For any other use, permission must first be arranged with the author. Unless otherwise specified, the author of the codes is Tomas Rubin (tomas.rubin@gmail.com). Please contact me if you find errors in the codes or if you have feature requests.
     
+[1] *Rubin and Panaretos (2020). "Spectral Simulation of Functional Time Series"*
+
 ## Contact
 
 Tomas Rubin
