@@ -37,6 +37,7 @@ The functions arguments and outputs are documented within the package. Run for e
 Run this code in your R concole (install first the package `devtools` if not installed yet):
 
 ```{r}
+# install.packages("devtools")
 library("devtools")
 install_github("tomasrubin/specsimfts")
 ```
