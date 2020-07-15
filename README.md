@@ -2,7 +2,7 @@
 
 This is the accompanying R package `specsimfts` for the paper:
 
-(to be submitted soon)**Rubin and Panaretos (2020). "Simulation of stationary functional time series with given spectral density".**
+(to be submitted soon)**Rubin and Panaretos (2020). "Spectral Simulation of Functional Time Series".**
 
 The package contains all the methods introduced in the aformentioned paper including all the presented examples as demos (see below) that are easy to use and modify by functional time series (FTS) practitioners.
 
@@ -42,6 +42,8 @@ install_github("tomasrubin/specsimfts")
 ```
 
 ## Running the demos
+
+You can run the demo files using the built-in R command `demo()` or alternatively download this GitHub repository and view the `*.R` files stored in the folder `\demo\`.
 
 ### FTS specified through eigendecomposition of its spectral density operators
 
@@ -92,7 +94,7 @@ demo("demo_custom_filter_SVD")
 
 ### FAR(FI)MA processes with general autoregressive and moving average operators (integral operators specified by their kernels)
 
-The FARMA(4,3) process, being a special case of the FARFIMA(p,d,q) process with d=0, scrutinized in Example 4.3 in the paper is included as a demo file `demo_FARMA`. The code allows to include an arbitrary number of autoregressive and moving average operators defined as integral operators with given kernels, and to set the fractional integration parameter d in the interval (-0.5, 0.5).
+The FARMA(4,3) process, being a special case of the FARFIMA(p,d,q) process with d=0, scrutinized in Example 4.3 in the paper is included as a demo file `demo_FARMA.R`. The code is easy to modify and allows to include an arbitrary number of autoregressive and moving average operators defined as integral operators with given kernels, and to set the fractional integration parameter d in the interval (-0.5, 0.5).
 
 ```{r}
 library("specsimfts")

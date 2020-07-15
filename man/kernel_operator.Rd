@@ -30,7 +30,7 @@ plot(f, type="l", col="blue", ylim=c(-0.5,2.5))
 lines( kernel_operator(ker,f), col="red" )
 legend("topleft",c("f","ker(f)"), col=c("blue","red"), lty=1)
 
-# Note that the above kernel function is in fact a rank one tensor, thus the application could be implemented as \code{rank_one_tensor( function(x) exp(x^2), function(x) exp(x^2), f )} which is computationally much faster.
+# Note that the above kernel function is in fact a rank one tensor, thus the application could be implemented as (which is faster to evaluate): rank_one_tensor( function(x) exp(x^2), function(x) exp(x^2), f )
 }
 \references{
 Rubin, Panaretos. \emph{Simulation of stationary functional time series with given spectral density}. arXiv, 2020

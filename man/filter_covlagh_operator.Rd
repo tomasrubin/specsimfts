@@ -75,7 +75,7 @@ n_grid <- 101
 lag <- 1 # change here to evaluate different lag-h autocovariance operator. put "lag <- 0" for lag-0 covariance operator
 n_grid <- 101
 
-# numerically evaluate lag-h autocovariance operator
+# numerically evaluate lag-h autocovariance operator - WARNING: this takes a minute or so
 lag <- 0
 covlagh <- filter_covlagh_operator(theta, lag, n_grid, sigma=sigma)
 
