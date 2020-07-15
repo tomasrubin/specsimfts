@@ -91,5 +91,5 @@ plot(fts_x[,1], type='l')
 Rubin, Panaretos. \emph{Simulation of stationary functional time series with given spectral density}. arXiv, 2020
 }
 \seealso{
-\code{\link{filter_covlagh_operator}} \code{\link{rank_one_tensor}} \code{\link{kernel_operator}}
+\code{\link{filter_covlagh_operator}}, \code{\link{rank_one_tensor}}, \code{\link{kernel_operator}}
 }

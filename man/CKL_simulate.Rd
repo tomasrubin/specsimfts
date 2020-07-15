@@ -56,5 +56,5 @@ plot( fts_x[,1], type='l' )
 Rubin, Panaretos. \emph{Simulation of stationary functional time series with given spectral density}. arXiv, 2020
 }
 \seealso{
-\code{\link{CKL_covlagh_operator}} \code{\link{spec_density_simulate}}
+\code{\link{CKL_covlagh_operator}}, \code{\link{spec_density_simulate}}
 }

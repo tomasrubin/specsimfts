@@ -10,7 +10,7 @@
 #' @param burnin If hybrid_ar=TRUE set how long is the burn-in period for the autoregressive part (100 by default) in the temporal domain.
 #' @return functional time series sample, matrix of size (\code{n_grid},\code{t_max})
 #' @references Rubin, Panaretos. \emph{Simulation of stationary functional time series with given spectral density}. arXiv, 2020
-#' @seealso \code{\link{FARFIMA_covlagh_operator}} \code{\link{FARFIMA_test_stationarity}}
+#' @seealso \code{\link{FARFIMA_covlagh_operator}}, \code{\link{FARFIMA_test_stationarity}}
 #' @examples
 #' # (i) fractional integration
 #' fractional_d <- 0 # in the open interval (-0.5, 0.5), positive number means long-range dependence

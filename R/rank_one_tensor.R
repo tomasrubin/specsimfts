@@ -7,7 +7,7 @@
 #' @param f The discretized function \code{f} represented as a vector. Assumes equidistant partition of [0,1]. 
 #' @return Vector of the same size as \code{f} representing the discretized function - the result of the application "(g1 'otimes' g2)(f)".
 #' @references Rubin, Panaretos. \emph{Simulation of stationary functional time series with given spectral density}. arXiv, 2020
-#' @seealso \code{\link{kernel_operator}} \code{\link{filter_simulate}}
+#' @seealso \code{\link{kernel_operator}}, \code{\link{filter_simulate}}
 #' @examples 
 #' # define kernel
 #' g1 <- function(x){ exp(x^2) }

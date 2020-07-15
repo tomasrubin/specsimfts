@@ -7,7 +7,7 @@
 #' @param n_grid_freq The grid points for the spectral density to evaluate at. Partition of [0,pi].
 #' @return lag-h autocovariance operator, matrix of size (n_grid,n_grid)
 #' @references Rubin, Panaretos. \emph{Simulation of stationary functional time series with given spectral density}. arXiv, 2020
-#' @seealso \code{\link{FARFIMA_simulate}} \code{\link{FARFIMA_test_stationarity}}
+#' @seealso \code{\link{FARFIMA_simulate}}, \code{\link{FARFIMA_test_stationarity}}
 #' @examples
 #' # (i) fractional integration
 #' fractional_d <- 0 # in the open interval (-0.5, 0.5), positive number means long-range dependence

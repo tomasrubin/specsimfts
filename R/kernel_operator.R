@@ -6,7 +6,7 @@
 #' @param f The discretized function \code{f} represented as a vector. Assumes equidistant partition of [0,1]. 
 #' @return Vector of the same size as \code{f} representing the discretized function - the result of the application "ker(f)".
 #' @references Rubin, Panaretos. \emph{Simulation of stationary functional time series with given spectral density}. arXiv, 2020
-#' @seealso \code{\link{rank_one_tensor}} \code{\link{filter_simulate}}
+#' @seealso \code{\link{rank_one_tensor}}, \code{\link{filter_simulate}}
 #' @examples 
 #' # define kernel
 #' ker <- function(x,y){ exp(x^2+y^2) }

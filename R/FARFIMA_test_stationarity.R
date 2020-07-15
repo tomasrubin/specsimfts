@@ -5,7 +5,7 @@
 #' @param n_grid Number of grid points (spatial resolution) of the discretisation of [0,1]^2. The method checks if the process is stationary on the discretization level. Assuming smoothness, it shoudn't be dependent on the grid resolution unless very coarse.
 #' @references Rubin, Panaretos. \emph{Simulation of stationary functional time series with given spectral density}. arXiv, 2020
 #' @return Returns \code{TRUE} or \code{FALSE} if stationary or not.
-#' @seealso \code{\link{FARFIMA_simulate}} \code{\link{FARFIMA_test_stationarity}}
+#' @seealso \code{\link{FARFIMA_simulate}}, \code{\link{FARFIMA_test_stationarity}}
 #' @examples
 #' # (i) fractional integration
 #' fractional_d <- 0 # in the open interval (-0.5, 0.5), positive number means long-range dependence

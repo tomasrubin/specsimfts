@@ -99,5 +99,5 @@ if (FARFIMA_test_stationarity(FARFIMA_pars)){
 Rubin, Panaretos. \emph{Simulation of stationary functional time series with given spectral density}. arXiv, 2020
 }
 \seealso{
-\code{\link{FARFIMA_covlagh_operator}} \code{\link{FARFIMA_test_stationarity}}
+\code{\link{FARFIMA_covlagh_operator}}, \code{\link{FARFIMA_test_stationarity}}
 }
