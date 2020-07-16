@@ -34,7 +34,7 @@ The functions arguments and outputs are documented within the package. Run for e
 
 ## Installation
 
-Run this code in your R concole (install first the package `devtools` if not installed yet):
+Run this code in your R console (install first the package `devtools` if not installed yet):
 
 ```{r}
 # install.packages("devtools")
