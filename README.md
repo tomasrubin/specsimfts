@@ -2,7 +2,7 @@
 
 This is the accompanying R package `specsimfts` for the paper:
 
-**Rubin and Panaretos (2020). [https://arxiv.org/abs/2007.08458]("Spectral Simulation of Functional Time Series")., _arXiv:2007.08458_** 
+**Rubin and Panaretos (2020). ["Spectral Simulation of Functional Time Series"](https://arxiv.org/abs/2007.08458)., _arXiv:2007.08458_** 
 
 The package contains all the methods introduced in the aformentioned paper including all the presented examples as demos (see below) that are easy to use and modify by functional time series (FTS) practitioners.
 
@@ -120,7 +120,7 @@ demo("demo_FARFIMA_spec_vs_hybrid")
 
 Individuals are free to use the codes for the purpose academic research, provided it is properly acknowledged and [1] is cited. For any other use, permission must first be arranged with the author. Unless otherwise specified, the author of the codes is Tomas Rubin (tomas.rubin@gmail.com). Please contact me if you find errors in the codes or if you have feature requests.
     
-[1] **Rubin and Panaretos (2020). [https://arxiv.org/abs/2007.08458]("Spectral Simulation of Functional Time Series")., _arXiv:2007.08458_** 
+[1] **Rubin and Panaretos (2020). ["Spectral Simulation of Functional Time Series"](https://arxiv.org/abs/2007.08458)., _arXiv:2007.08458_** 
 
 ## Contact
 
