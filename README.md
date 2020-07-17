@@ -1,4 +1,4 @@
-# Spectral domain simulation of functional time series 
+# Spectral Simulation of Functional Time Series
 
 This is the accompanying R package `specsimfts` for the paper:
 
