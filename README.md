@@ -44,7 +44,7 @@ install_github("tomasrubin/specsimfts")
 
 ## Running the demos
 
-You can run the demo files using the built-in R command `demo()` or alternatively download this GitHub repository and view the `*.R` files stored in the folder `\demo\`.
+You can run the demo files using the built-in R command `demo()` or alternatively download this GitHub repository and view the `*.R` files stored in the folder `/demo/`.
 
 ### FTS specified through eigendecomposition of its spectral density operators
 
