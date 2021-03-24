@@ -7,6 +7,16 @@ This is the accompanying R package `specsimfts` for the paper:
 The package contains all the methods introduced in the aformentioned paper including all the presented examples as demos (see below) that are easy to use and modify by functional time series (FTS) practitioners.
 
 
+## Installation
+
+Run this code in your R console (install first the package `devtools` if not installed yet):
+
+```{r}
+# install.packages("devtools")
+library("devtools")
+install_github("tomasrubin/specsimfts")
+```
+
 ## Methods description
 
 For the background to the simulation methods refer to the article [1].
@@ -32,15 +42,6 @@ The functions arguments and outputs are documented within the package. Run for e
 
 
 
-## Installation
-
-Run this code in your R console (install first the package `devtools` if not installed yet):
-
-```{r}
-# install.packages("devtools")
-library("devtools")
-install_github("tomasrubin/specsimfts")
-```
 
 ## Running the demos
 
